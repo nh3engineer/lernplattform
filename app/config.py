@@ -19,9 +19,15 @@ HOST = os.environ.get("LP_HOST", "0.0.0.0")
 PORT = int(os.environ.get("LP_PORT", "5000"))
 SECRET_KEY = os.environ.get("LP_SECRET_KEY", "bitte-im-produktivbetrieb-aendern")
 
-# Anzahl der Fragen pro Pruefung (zufaellige Auswahl aus dem Themengebiet).
-# 0 = alle Fragen des gewaehlten Themas verwenden.
-FRAGEN_PRO_PRUEFUNG = int(os.environ.get("LP_FRAGEN_PRO_PRUEFUNG", "0"))
+# --- Uebungsmodus (ohne PDF/Mail) -------------------------------------------
+# Anzahl Fragen beim Ueben; danach werden sofort die Loesungen angezeigt.
+UEBUNG_FRAGEN = int(os.environ.get("LP_UEBUNG_FRAGEN", "5"))
+
+# --- Pruefungsmodus (mit PDF/Mail) ------------------------------------------
+# Richtzeit einer Pruefung in Minuten (Timer im Browser, Auto-Abgabe bei 0).
+PRUEFUNG_DAUER_MIN = int(os.environ.get("LP_PRUEFUNG_DAUER_MIN", "20"))
+# Anzahl Fragen pro Pruefung (auf ca. die Richtzeit ausgelegt).
+PRUEFUNG_FRAGEN = int(os.environ.get("LP_PRUEFUNG_FRAGEN", "12"))
 
 # --- E-Mail-Versand (SMTP) ---------------------------------------------------
 SMTP_HOST = os.environ.get("LP_SMTP_HOST", "smtp.gmail.com")

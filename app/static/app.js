@@ -1,7 +1,10 @@
 "use strict";
 
 let BAUM = [];
-let AKTUELL = null;   // { fach, stufe, thema, fragen: [...] }
+let AKTUELL = null;     // { fach, stufe, thema, modus, fragen, kontext, name, email }
+let MODUS = "uebung";   // "uebung" | "pruefung"
+let TIMER = null;       // Intervall-ID
+let REST = 0;           // verbleibende Sekunden
 
 const $ = (id) => document.getElementById(id);
 
@@ -40,6 +43,11 @@ function fuelleThemen() {
   themaSel.innerHTML = '<option value="">-- wählen --</option>';
   themaSel.disabled = !stufe;
   if (!stufe) return;
+  // Option: ganze Schulstufe (alle Themen)
+  const oAlle = document.createElement("option");
+  oAlle.value = "__alle__";
+  oAlle.textContent = `Alle Themen der Schulstufe (${stufe.gesamt} Fragen)`;
+  themaSel.appendChild(oAlle);
   stufe.themen.forEach(t => {
     const o = document.createElement("option");
     o.value = t.key;
@@ -48,25 +56,95 @@ function fuelleThemen() {
   });
 }
 
+function setzeModus(m) {
+  MODUS = m;
+  const uebung = m === "uebung";
+  $("modus-uebung").classList.toggle("aktiv", uebung);
+  $("modus-uebung").setAttribute("aria-pressed", String(uebung));
+  $("modus-pruefung").classList.toggle("aktiv", !uebung);
+  $("modus-pruefung").setAttribute("aria-pressed", String(!uebung));
+  $("pruefung-felder").classList.toggle("versteckt", uebung);
+  $("btn-start").textContent = uebung ? "Übung starten" : "Prüfung starten";
+  // Prüfung: Standardmäßig "Alle Themen" vorschlagen, falls vorhanden
+  if (!uebung) {
+    const themaSel = $("thema");
+    if (!themaSel.disabled && themaSel.value === "" && themaSel.options.length > 1) {
+      themaSel.value = "__alle__";
+    }
+  }
+}
+
 async function starten() {
   const fach = $("fach").value, stufe = $("stufe").value, thema = $("thema").value;
   if (!fach || !stufe || !thema) {
     melden("auswahl-msg", "Bitte Fach, Schulstufe und Themengebiet wählen.", "err");
     return;
   }
-  const url = `/api/pruefung?fach=${fach}&stufe=${stufe}&thema=${thema}`;
+  let name = "", email = "";
+  if (MODUS === "pruefung") {
+    name = $("name").value.trim();
+    email = $("email").value.trim();
+    if (!email || !email.includes("@")) {
+      melden("auswahl-msg", "Für eine Prüfung bitte zuerst eine gültige E-Mail-Adresse eingeben.", "err");
+      return;
+    }
+  }
+
+  const url = `/api/pruefung?fach=${fach}&stufe=${stufe}&thema=${encodeURIComponent(thema)}&modus=${MODUS}`;
   const res = await fetch(url);
   const data = await res.json();
   if (data.fehler) { melden("auswahl-msg", data.fehler, "err"); return; }
 
-  AKTUELL = { fach, stufe, thema, fragen: data.fragen };
+  AKTUELL = {
+    fach, stufe, thema, modus: MODUS, name, email,
+    fragen: data.fragen,
+    kontext: { fach_name: data.fach_name, stufe_name: data.stufe_name, thema_name: data.thema_name },
+  };
+
   $("pruefung-titel").textContent =
     `${data.fach_name} · ${data.stufe_name} · ${data.thema_name}`;
+  $("btn-abgeben").textContent = (MODUS === "uebung") ? "Lösungen anzeigen" : "Prüfung abgeben";
   rendereFragen(data.fragen);
+
+  // Timer nur bei Pruefung
+  stoppeTimer();
+  if (MODUS === "pruefung" && data.dauer_min) {
+    starteTimer(data.dauer_min * 60);
+    $("timer-bar").classList.remove("versteckt");
+  } else {
+    $("timer-bar").classList.add("versteckt");
+  }
+
+  melden("auswahl-msg", "", "");
+  melden("abgabe-msg", "", "");
   $("bereich-auswahl").classList.add("versteckt");
   $("bereich-pruefung").classList.remove("versteckt");
   $("bereich-ergebnis").classList.add("versteckt");
   window.scrollTo(0, 0);
+}
+
+function starteTimer(sekunden) {
+  REST = sekunden;
+  aktualisiereTimer();
+  TIMER = setInterval(() => {
+    REST -= 1;
+    aktualisiereTimer();
+    if (REST <= 0) {
+      stoppeTimer();
+      melden("abgabe-msg", "Zeit abgelaufen – die Prüfung wurde automatisch abgegeben.", "err");
+      abgeben(true);
+    }
+  }, 1000);
+}
+function stoppeTimer() {
+  if (TIMER) { clearInterval(TIMER); TIMER = null; }
+}
+function aktualisiereTimer() {
+  const m = Math.floor(Math.max(0, REST) / 60);
+  const s = Math.max(0, REST) % 60;
+  const el = $("timer-zeit");
+  el.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  el.classList.toggle("knapp", REST <= 60);
 }
 
 function rendereFragen(fragen) {
@@ -105,19 +183,20 @@ function sammleAntworten() {
   return antworten;
 }
 
-async function abgeben() {
-  const name = $("name").value.trim();
-  const email = $("email").value.trim();
-  if (!email || !email.includes("@")) {
-    melden("abgabe-msg", "Bitte eine gültige E-Mail-Adresse eingeben – dorthin wird das PDF geschickt.", "err");
-    return;
-  }
+async function abgeben(autoAbgabe) {
+  stoppeTimer();
   const btn = $("btn-abgeben");
-  btn.disabled = true; btn.textContent = "Wird ausgewertet …";
+  btn.disabled = true;
+  btn.textContent = "Wird ausgewertet …";
 
   const payload = {
-    fach: AKTUELL.fach, stufe: AKTUELL.stufe, thema: AKTUELL.thema,
-    name, email, antworten: sammleAntworten(),
+    modus: AKTUELL.modus,
+    fach_name: AKTUELL.kontext.fach_name,
+    stufe_name: AKTUELL.kontext.stufe_name,
+    thema_name: AKTUELL.kontext.thema_name,
+    name: AKTUELL.name,
+    email: AKTUELL.email,
+    antworten: sammleAntworten(),
   };
   AKTUELL.letzteAbgabe = payload;
 
@@ -132,11 +211,15 @@ async function abgeben() {
   } catch (e) {
     melden("abgabe-msg", "Fehler bei der Übermittlung: " + e, "err");
   } finally {
-    btn.disabled = false; btn.textContent = "Prüfung abgeben & auswerten";
+    btn.disabled = false;
+    btn.textContent = (AKTUELL.modus === "uebung") ? "Lösungen anzeigen" : "Prüfung abgeben";
   }
 }
 
 function zeigeErgebnis(data) {
+  const uebung = data.modus === "uebung";
+  $("ergebnis-titel").textContent = uebung ? "Übungs-Auswertung" : "Prüfungs-Auswertung";
+  $("detail-ueberschrift").textContent = uebung ? "Lösungen" : "Detailauswertung";
   $("stat-punkte").textContent = `${data.punkte} / ${data.max_punkte}`;
   $("stat-prozent").textContent = `${data.prozent} %`;
   $("stat-note").textContent = data.note;
@@ -151,29 +234,36 @@ function zeigeErgebnis(data) {
        <div>
          <div><b>${i + 1}. ${esc(d.frage)}</b></div>
          <div class="meta">Deine Antwort: ${esc(d.deine_antwort)}</div>
-         <div class="meta">Richtige Antwort: ${esc(d.loesung)}</div>
+         <div class="meta">Richtige Antwort: <b>${esc(d.loesung)}</b></div>
          <div class="meta"><i>${esc(d.erklaerung)}</i></div>
        </div>`;
     dc.appendChild(div);
   });
 
-  // Mail-Status
-  let mtext = "", mtyp = "ok";
-  const m = data.mail || {};
-  if (m.versendet && m.versendet.length) {
-    mtext = "PDF versendet an: " + m.versendet.join(", ");
+  const mailEl = $("mail-status");
+  const pdfBtn = $("btn-pdf");
+  if (uebung) {
+    mailEl.classList.add("versteckt");
+    pdfBtn.classList.add("versteckt");
+  } else {
+    // Mail-Status anzeigen
+    let mtext = "", mtyp = "ok";
+    const m = data.mail || {};
+    if (m.versendet && m.versendet.length) {
+      mtext = "PDF versendet an: " + m.versendet.join(", ");
+    }
+    if (m.gespeichert) {
+      mtext += (mtext ? " – " : "") +
+        "Hinweis: E-Mail-Versand ist nicht konfiguriert, das PDF wurde lokal gespeichert.";
+      mtyp = "err";
+    }
+    mailEl.textContent = mtext || "Auswertung abgeschlossen.";
+    mailEl.className = "msg " + mtyp;
+    mailEl.classList.remove("versteckt");
+    pdfBtn.classList.remove("versteckt");
   }
-  if (m.gespeichert) {
-    mtext += (mtext ? " – " : "") +
-      "Hinweis: E-Mail-Versand ist nicht konfiguriert, das PDF wurde lokal gespeichert.";
-    mtyp = "err";
-  }
-  if (m.fehler && m.fehler.length && !m.versendet.length) {
-    mtyp = "err";
-  }
-  $("mail-status").textContent = mtext || "Auswertung abgeschlossen.";
-  $("mail-status").className = "msg " + mtyp;
 
+  $("timer-bar").classList.add("versteckt");
   $("bereich-pruefung").classList.add("versteckt");
   $("bereich-ergebnis").classList.remove("versteckt");
   window.scrollTo(0, 0);
@@ -190,6 +280,13 @@ async function pdfDownload() {
   const a = document.createElement("a");
   a.href = url; a.download = "auswertung.pdf"; a.click();
   URL.revokeObjectURL(url);
+}
+
+function abbrechen() {
+  stoppeTimer();
+  $("timer-bar").classList.add("versteckt");
+  $("bereich-pruefung").classList.add("versteckt");
+  $("bereich-auswahl").classList.remove("versteckt");
 }
 
 function neuStarten() {
@@ -213,8 +310,11 @@ document.addEventListener("DOMContentLoaded", () => {
   init();
   $("fach").addEventListener("change", fuelleStufen);
   $("stufe").addEventListener("change", fuelleThemen);
+  $("modus-uebung").addEventListener("click", () => setzeModus("uebung"));
+  $("modus-pruefung").addEventListener("click", () => setzeModus("pruefung"));
   $("btn-start").addEventListener("click", starten);
-  $("btn-abgeben").addEventListener("click", abgeben);
+  $("btn-abgeben").addEventListener("click", () => abgeben(false));
+  $("btn-abbrechen").addEventListener("click", abbrechen);
   $("btn-pdf").addEventListener("click", pdfDownload);
   $("btn-neu").addEventListener("click", neuStarten);
 });

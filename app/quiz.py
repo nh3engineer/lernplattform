@@ -1,4 +1,4 @@
-"""Laden der Fragen und Bewertung der Pruefungen."""
+"""Laden der Fragen und Bewertung von Uebungen/Pruefungen."""
 import json
 import os
 import random
@@ -8,10 +8,28 @@ DATA_PATH = os.path.join(
     "data", "fragen.json",
 )
 
+ALLE = "__alle__"   # Spezialwert: alle Themen einer Schulstufe
+
 
 def lade_daten() -> dict:
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def _index(daten: dict) -> dict:
+    """Globaler Index: frage_id -> {frage, fach_name, stufe_name, thema_name}."""
+    idx = {}
+    for fach in daten["faecher"].values():
+        for stufe in fach["stufen"].values():
+            for thema in stufe["themen"].values():
+                for q in thema["fragen"]:
+                    idx[q["id"]] = {
+                        "frage": q,
+                        "fach_name": fach["name"],
+                        "stufe_name": stufe["name"],
+                        "thema_name": thema["name"],
+                    }
+    return idx
 
 
 def fach_liste() -> list:
@@ -21,93 +39,95 @@ def fach_liste() -> list:
     for fach_key, fach in daten["faecher"].items():
         stufen = []
         for stufe_key, stufe in sorted(fach["stufen"].items()):
-            themen = []
-            for thema_key, thema in stufe["themen"].items():
-                themen.append({
-                    "key": thema_key,
-                    "name": thema["name"],
-                    "anzahl": len(thema["fragen"]),
-                })
-            stufen.append({"key": stufe_key, "name": stufe["name"], "themen": themen})
+            themen = [{"key": tk, "name": t["name"], "anzahl": len(t["fragen"])}
+                      for tk, t in stufe["themen"].items()]
+            gesamt = sum(x["anzahl"] for x in themen)
+            stufen.append({"key": stufe_key, "name": stufe["name"],
+                           "themen": themen, "gesamt": gesamt})
         out.append({"key": fach_key, "name": fach["name"], "stufen": stufen})
     return out
 
 
-def hole_thema(fach_key: str, stufe_key: str, thema_key: str):
+def _sammle_fragen(fach_key, stufe_key, thema_key):
+    """Liefert (kontext, fragenliste) fuer ein Thema oder die ganze Stufe."""
     daten = lade_daten()
     fach = daten["faecher"].get(fach_key)
     if not fach:
-        return None
+        return None, None
     stufe = fach["stufen"].get(stufe_key)
     if not stufe:
-        return None
-    thema = stufe["themen"].get(thema_key)
-    if not thema:
-        return None
-    return {
-        "fach_name": fach["name"],
-        "stufe_name": stufe["name"],
-        "thema_name": thema["name"],
-        "fragen": thema["fragen"],
-    }
+        return None, None
+
+    if thema_key == ALLE:
+        fragen = []
+        for thema in stufe["themen"].values():
+            fragen.extend(thema["fragen"])
+        thema_name = "Alle Themen der Schulstufe"
+    else:
+        thema = stufe["themen"].get(thema_key)
+        if not thema:
+            return None, None
+        fragen = list(thema["fragen"])
+        thema_name = thema["name"]
+
+    kontext = {"fach_name": fach["name"], "stufe_name": stufe["name"],
+               "thema_name": thema_name}
+    return kontext, fragen
 
 
-def erzeuge_pruefung(fach_key, stufe_key, thema_key, anzahl=0):
-    """Gibt die (ggf. zufaellig gemischten) Fragen OHNE Loesungen zurueck."""
-    thema = hole_thema(fach_key, stufe_key, thema_key)
-    if thema is None:
+def erzeuge_pruefung(fach_key, stufe_key, thema_key, anzahl):
+    """Gibt (ggf. zufaellig gemischte) Fragen OHNE Loesungen zurueck."""
+    kontext, fragen = _sammle_fragen(fach_key, stufe_key, thema_key)
+    if kontext is None:
         return None
-    fragen = list(thema["fragen"])
+    fragen = list(fragen)
     random.shuffle(fragen)
     if anzahl and anzahl > 0:
         fragen = fragen[:anzahl]
+
     public = []
     for q in fragen:
         pub = {"id": q["id"], "typ": q["typ"], "frage": q["frage"]}
         if q["typ"] == "mc":
-            # Optionen mischen, Zuordnung ueber Original-Index bleibt in loesung
             opts = list(enumerate(q["optionen"]))
             random.shuffle(opts)
             pub["optionen"] = [{"idx": i, "text": t} for i, t in opts]
         else:
             pub["einheit"] = q.get("einheit", "")
         public.append(pub)
+
     return {
-        "fach_name": thema["fach_name"],
-        "stufe_name": thema["stufe_name"],
-        "thema_name": thema["thema_name"],
+        "fach_name": kontext["fach_name"],
+        "stufe_name": kontext["stufe_name"],
+        "thema_name": kontext["thema_name"],
         "fragen": public,
     }
 
 
-def _mc_text(frage: dict, idx) -> str:
+def _mc_text(frage, idx):
     try:
         return frage["optionen"][int(idx)]
     except (ValueError, TypeError, IndexError):
         return "(keine Antwort)"
 
 
-def bewerte(fach_key, stufe_key, thema_key, antworten: dict) -> dict:
+def bewerte(antworten: dict, kontext: dict = None) -> dict:
     """
-    antworten: {frage_id: wert}  (wert = Options-Index bei mc, Zahl/Text bei num)
-    Gibt die vollstaendige Auswertung inkl. Note zurueck.
+    Bewertet anhand des globalen Frage-Index (funktioniert auch bei
+    gemischten Pruefungen ueber mehrere Themen).
+    antworten: {frage_id: wert}
+    kontext (optional): {fach_name, stufe_name, thema_name} fuer die Anzeige.
     """
-    thema = hole_thema(fach_key, stufe_key, thema_key)
-    if thema is None:
+    idx = _index(lade_daten())
+    gestellte = [fid for fid in antworten.keys() if fid in idx]
+    if not gestellte:
         return None
-    by_id = {q["id"]: q for q in thema["fragen"]}
 
     details = []
     punkte = 0
-    # Nur Fragen bewerten, die auch gestellt wurden (in antworten vorhanden).
-    gestellte_ids = [fid for fid in antworten.keys() if fid in by_id]
-    if not gestellte_ids:
-        gestellte_ids = list(by_id.keys())
-
-    for fid in gestellte_ids:
-        q = by_id[fid]
-        gegeben = antworten.get(fid, None)
-        richtig = False
+    for fid in gestellte:
+        q = idx[fid]["frage"]
+        gegeben = antworten.get(fid)
         if q["typ"] == "mc":
             deine_text = _mc_text(q, gegeben)
             loesung_text = q["optionen"][q["loesung"]]
@@ -117,12 +137,11 @@ def bewerte(fach_key, stufe_key, thema_key, antworten: dict) -> dict:
                 richtig = False
         else:  # num
             loesung_text = f"{q['loesung']} {q.get('einheit','')}".strip()
-            deine_roh = (str(gegeben).strip() if gegeben is not None else "")
-            deine_text = deine_roh or "(keine Antwort)"
+            roh = (str(gegeben).strip() if gegeben is not None else "")
+            deine_text = roh or "(keine Antwort)"
             try:
-                wert = float(deine_roh.replace(",", "."))
-                tol = q.get("toleranz", 0.001)
-                richtig = abs(wert - float(q["loesung"])) <= tol
+                wert = float(roh.replace(",", "."))
+                richtig = abs(wert - float(q["loesung"])) <= q.get("toleranz", 0.001)
             except (ValueError, TypeError):
                 richtig = False
 
@@ -138,16 +157,22 @@ def bewerte(fach_key, stufe_key, thema_key, antworten: dict) -> dict:
 
     max_punkte = len(details)
     prozent = (punkte / max_punkte * 100) if max_punkte else 0.0
-    note = _note(prozent)
+
+    # Kontext aus der ersten Frage ableiten, falls nicht uebergeben
+    if not kontext:
+        erste = idx[gestellte[0]]
+        kontext = {"fach_name": erste["fach_name"],
+                   "stufe_name": erste["stufe_name"],
+                   "thema_name": erste["thema_name"]}
 
     return {
-        "fach": thema["fach_name"],
-        "stufe_name": thema["stufe_name"],
-        "thema_name": thema["thema_name"],
+        "fach": kontext["fach_name"],
+        "stufe_name": kontext["stufe_name"],
+        "thema_name": kontext["thema_name"],
         "punkte": punkte,
         "max_punkte": max_punkte,
         "prozent": prozent,
-        "note": note,
+        "note": _note(prozent),
         "details": details,
     }
 

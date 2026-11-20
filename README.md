@@ -12,16 +12,26 @@ Die Anwendung läuft lokal auf jedem Rechner mit Python (Windows, macOS, Linux).
 
 ## Funktionen
 
-- Auswahl: Fach → Schulstufe → Themengebiet
+- Auswahl: Fach → Schulstufe → Themengebiet (oder **alle Themen der Stufe**)
+- **Zwei Modi:**
+  - **Üben** – standardmäßig 5 Fragen, danach sofort die Lösungen; **ohne**
+    E-Mail und ohne PDF (zum Trainieren).
+  - **Prüfung** – auf ca. **20 Minuten** ausgelegt (mitlaufender Timer mit
+    automatischer Abgabe bei Ablauf), mit PDF-Auswertung und E-Mail-Versand.
+- Über **40 Themengebiete** in Physik und Mathematik (HTL 1.–5. Klasse)
 - Fragetypen: Multiple Choice (Antwortoptionen werden gemischt) und numerische
   Eingaben (mit Toleranz)
 - Automatische Bewertung inkl. Prozent und österreichischer Note (1–5)
 - Detailauswertung mit richtiger Antwort und kurzer Erklärung je Frage
-- PDF-Erstellung der Auswertung
+- PDF-Erstellung der Auswertung (nur Prüfungsmodus)
 - E-Mail-Versand an Prüfling **und** Lehrperson (`hechtl.office@gmail.com`)
 - Transparenter Hinweis im Formular, dass die Lehrperson eine Kopie erhält
 - Ohne konfigurierten Mailserver werden die PDFs lokal im Ordner
   `ergebnisse/` abgelegt, sodass alles auch offline testbar ist
+
+Die Richtwerte (Anzahl Fragen, Prüfungsdauer) lassen sich per Umgebungsvariable
+einstellen: `LP_UEBUNG_FRAGEN` (Standard 5), `LP_PRUEFUNG_FRAGEN` (Standard 12),
+`LP_PRUEFUNG_DAUER_MIN` (Standard 20).
 
 ---
 
@@ -89,17 +99,22 @@ Auswertung.
 
 ## Fragen erweitern
 
-Alle Fragen stehen in `data/fragen.json`. Struktur:
+Die Fragen werden aus `data/build_fragen.py` erzeugt. Dort werden die
+**numerischen Lösungen in Python berechnet** – so entstehen keine
+Rechenfehler. Neue Fragen/Themen einfach im Generator ergänzen und
 
+```bash
+python data/build_fragen.py
 ```
-faecher → <fach> → stufen → <1..5> → themen → <thema> → fragen → [ ... ]
-```
 
-Fragetypen:
+ausführen; das schreibt `data/fragen.json` neu. Danach Server neu starten.
 
-- `"typ": "mc"` – Multiple Choice: `optionen` (Liste), `loesung` (Index der
-  richtigen Option, 0-basiert)
-- `"typ": "num"` – numerisch: `loesung` (Zahl), `toleranz`, optional `einheit`
+Fragetypen im Generator:
 
-Jede Frage kann eine `erklaerung` enthalten, die in der Auswertung erscheint.
-Nach dem Bearbeiten der JSON-Datei genügt ein Neustart des Servers.
+- `MC(frage, optionen, loesung, erklaerung)` – Multiple Choice; `loesung` ist der
+  0-basierte Index der richtigen Option.
+- `NUM(frage, loesung, toleranz, einheit, erklaerung)` – numerisch; `loesung`
+  darf ein Python-Ausdruck sein (wird berechnet).
+
+Alternativ kann `data/fragen.json` auch direkt bearbeitet werden (Struktur:
+`faecher → <fach> → stufen → <1..5> → themen → <thema> → fragen`).

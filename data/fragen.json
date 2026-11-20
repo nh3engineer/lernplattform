@@ -9,28 +9,315 @@
             "termumformungen": {
               "name": "Termumformungen & Grundrechenarten",
               "fragen": [
-                {"id": "m1-term-1", "typ": "mc", "frage": "Vereinfache: 3a + 5a - 2a", "optionen": ["6a", "10a", "a", "8a"], "loesung": 0, "erklaerung": "3 + 5 - 2 = 6, also 6a."},
-                {"id": "m1-term-2", "typ": "mc", "frage": "Multipliziere aus: 2(x + 4)", "optionen": ["2x + 4", "2x + 8", "x + 8", "2x + 6"], "loesung": 1, "erklaerung": "2·x + 2·4 = 2x + 8."},
-                {"id": "m1-term-3", "typ": "num", "frage": "Berechne den Wert des Terms 4x - 3 für x = 5.", "loesung": 17, "toleranz": 0.001, "einheit": "", "erklaerung": "4·5 - 3 = 20 - 3 = 17."},
-                {"id": "m1-term-4", "typ": "mc", "frage": "Binomische Formel: (a + b)² =", "optionen": ["a² + b²", "a² + ab + b²", "a² + 2ab + b²", "a² - 2ab + b²"], "loesung": 2, "erklaerung": "Erste binomische Formel: a² + 2ab + b²."},
-                {"id": "m1-term-5", "typ": "num", "frage": "Berechne: (-3)² + 2·(-4)", "loesung": 1, "toleranz": 0.001, "einheit": "", "erklaerung": "9 + (-8) = 1."}
+                {
+                  "typ": "mc",
+                  "frage": "Vereinfache: 3a + 5a - 2a",
+                  "optionen": [
+                    "6a",
+                    "10a",
+                    "a",
+                    "8a"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "3+5-2 = 6, also 6a.",
+                  "id": "m1-termumformungen-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Multipliziere aus: 2(x + 4)",
+                  "optionen": [
+                    "2x + 4",
+                    "2x + 8",
+                    "x + 8",
+                    "2x + 6"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "2·x + 2·4 = 2x + 8.",
+                  "id": "m1-termumformungen-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Erste binomische Formel: (a + b)² =",
+                  "optionen": [
+                    "a² + b²",
+                    "a² + ab + b²",
+                    "a² + 2ab + b²",
+                    "a² - 2ab + b²"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "a² + 2ab + b².",
+                  "id": "m1-termumformungen-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne den Wert des Terms 4x - 3 für x = 5.",
+                  "loesung": 17.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "4·5 - 3 = 17.",
+                  "id": "m1-termumformungen-4"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne: (-3)² + 2·(-4)",
+                  "loesung": 1.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "9 + (-8) = 1.",
+                  "id": "m1-termumformungen-5"
+                }
               ]
             },
             "lineare-gleichungen": {
               "name": "Lineare Gleichungen",
               "fragen": [
-                {"id": "m1-lin-1", "typ": "num", "frage": "Löse nach x: 2x + 6 = 14", "loesung": 4, "toleranz": 0.001, "einheit": "", "erklaerung": "2x = 8, x = 4."},
-                {"id": "m1-lin-2", "typ": "num", "frage": "Löse nach x: 5x - 7 = 3x + 5", "loesung": 6, "toleranz": 0.001, "einheit": "", "erklaerung": "2x = 12, x = 6."},
-                {"id": "m1-lin-3", "typ": "mc", "frage": "Welche Umformung ist bei Gleichungen erlaubt?", "optionen": ["Beide Seiten mit 0 multiplizieren", "Auf beiden Seiten dieselbe Zahl addieren", "Nur eine Seite verändern", "Durch eine Variable dividieren, die 0 sein kann"], "loesung": 1, "erklaerung": "Äquivalenzumformungen müssen auf beiden Seiten gleich erfolgen."},
-                {"id": "m1-lin-4", "typ": "num", "frage": "Löse nach x: (x/3) = 4", "loesung": 12, "toleranz": 0.001, "einheit": "", "erklaerung": "x = 4·3 = 12."}
+                {
+                  "typ": "num",
+                  "frage": "Löse nach x: 2x + 6 = 14",
+                  "loesung": 4.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "2x = 8, x = 4.",
+                  "id": "m1-lineare-gleichungen-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Löse nach x: 5x - 7 = 3x + 5",
+                  "loesung": 6.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "2x = 12, x = 6.",
+                  "id": "m1-lineare-gleichungen-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Löse nach x: x/3 = 4",
+                  "loesung": 12.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "x = 12.",
+                  "id": "m1-lineare-gleichungen-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Welche Umformung ist bei Gleichungen erlaubt?",
+                  "optionen": [
+                    "Beide Seiten mit 0 multiplizieren",
+                    "Auf beiden Seiten dieselbe Zahl addieren",
+                    "Nur eine Seite verändern",
+                    "Durch 0 dividieren"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Äquivalenzumformung auf beiden Seiten.",
+                  "id": "m1-lineare-gleichungen-4"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Löse nach x: 3(x - 2) = 9",
+                  "loesung": 5.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "x - 2 = 3, x = 5.",
+                  "id": "m1-lineare-gleichungen-5"
+                }
               ]
             },
-            "prozentrechnung": {
-              "name": "Prozent- & Schlussrechnung",
+            "bruchrechnung": {
+              "name": "Bruchrechnung",
               "fragen": [
-                {"id": "m1-proz-1", "typ": "num", "frage": "Wie viel sind 15 % von 240?", "loesung": 36, "toleranz": 0.01, "einheit": "", "erklaerung": "240·0,15 = 36."},
-                {"id": "m1-proz-2", "typ": "num", "frage": "Ein Preis steigt von 80 € auf 100 €. Um wie viel Prozent?", "loesung": 25, "toleranz": 0.1, "einheit": "%", "erklaerung": "20/80 = 0,25 = 25 %."},
-                {"id": "m1-proz-3", "typ": "num", "frage": "Von welcher Zahl sind 30 gleich 12 %?", "loesung": 250, "toleranz": 0.1, "einheit": "", "erklaerung": "30/0,12 = 250."}
+                {
+                  "typ": "num",
+                  "frage": "Berechne: 1/2 + 1/4 (als Dezimalzahl)",
+                  "loesung": 0.75,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "0,5 + 0,25 = 0,75.",
+                  "id": "m1-bruchrechnung-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne: 2/3 · 3/4 (Dezimalzahl)",
+                  "loesung": 0.5,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "6/12 = 0,5.",
+                  "id": "m1-bruchrechnung-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne: (3/4) : (1/2) (Dezimalzahl)",
+                  "loesung": 1.5,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "3/4 · 2/1 = 1,5.",
+                  "id": "m1-bruchrechnung-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Wie kürzt man 6/8?",
+                  "optionen": [
+                    "2/4",
+                    "3/4",
+                    "4/6",
+                    "1/2"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Durch 2 kürzen: 3/4.",
+                  "id": "m1-bruchrechnung-4"
+                }
+              ]
+            },
+            "potenzen-wurzeln": {
+              "name": "Potenzen & Wurzeln",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Berechne: 2⁵",
+                  "loesung": 32.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "2·2·2·2·2 = 32.",
+                  "id": "m1-potenzen-wurzeln-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Potenzgesetz: a³ · a² =",
+                  "optionen": [
+                    "a⁵",
+                    "a⁶",
+                    "a¹",
+                    "a⁹"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Exponenten addieren: a^(3+2)=a⁵.",
+                  "id": "m1-potenzen-wurzeln-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne: √144",
+                  "loesung": 12.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "12² = 144.",
+                  "id": "m1-potenzen-wurzeln-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Was bedeutet a⁻²?",
+                  "optionen": [
+                    "-a²",
+                    "1/a²",
+                    "2/a",
+                    "a·(-2)"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Negativer Exponent: Kehrwert, 1/a².",
+                  "id": "m1-potenzen-wurzeln-4"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne: 10³ · 10² (als Zehnerpotenz-Ergebnis)",
+                  "loesung": 100000.0,
+                  "toleranz": 1,
+                  "einheit": "",
+                  "erklaerung": "10^(3+2)=10⁵=100000.",
+                  "id": "m1-potenzen-wurzeln-5"
+                }
+              ]
+            },
+            "geometrie": {
+              "name": "Flächen & Volumina",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Fläche eines Rechtecks mit a = 5 cm, b = 3 cm?",
+                  "loesung": 15.0,
+                  "toleranz": 0.01,
+                  "einheit": "cm²",
+                  "erklaerung": "A = a·b = 15 cm².",
+                  "id": "m1-geometrie-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Fläche eines Kreises mit r = 2 cm? (gerundet)",
+                  "loesung": 12.566371,
+                  "toleranz": 0.1,
+                  "einheit": "cm²",
+                  "erklaerung": "A = π·r² ≈ 12,57 cm².",
+                  "id": "m1-geometrie-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Umfang eines Kreises mit r = 5 cm? (gerundet)",
+                  "loesung": 31.415927,
+                  "toleranz": 0.1,
+                  "einheit": "cm",
+                  "erklaerung": "U = 2πr ≈ 31,42 cm.",
+                  "id": "m1-geometrie-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Volumen eines Würfels mit a = 3 cm?",
+                  "loesung": 27.0,
+                  "toleranz": 0.01,
+                  "einheit": "cm³",
+                  "erklaerung": "V = a³ = 27 cm³.",
+                  "id": "m1-geometrie-4"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Fläche eines Dreiecks berechnet man mit",
+                  "optionen": [
+                    "a·b",
+                    "(g·h)/2",
+                    "π·r²",
+                    "a²"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "A = Grundlinie·Höhe/2.",
+                  "id": "m1-geometrie-5"
+                }
+              ]
+            },
+            "einheiten": {
+              "name": "Maßeinheiten & Umrechnen",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Wandle 2,5 km in Meter um.",
+                  "loesung": 2500.0,
+                  "toleranz": 0.1,
+                  "einheit": "m",
+                  "erklaerung": "1 km = 1000 m → 2500 m.",
+                  "id": "m1-einheiten-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Wandle 1500 g in kg um.",
+                  "loesung": 1.5,
+                  "toleranz": 0.001,
+                  "einheit": "kg",
+                  "erklaerung": "1000 g = 1 kg → 1,5 kg.",
+                  "id": "m1-einheiten-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Wandle 3 h in Minuten um.",
+                  "loesung": 180.0,
+                  "toleranz": 0.1,
+                  "einheit": "min",
+                  "erklaerung": "1 h = 60 min → 180 min.",
+                  "id": "m1-einheiten-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Wie viele cm² sind 1 m²?",
+                  "loesung": 10000.0,
+                  "toleranz": 1,
+                  "einheit": "cm²",
+                  "erklaerung": "1 m = 100 cm → (100)² = 10 000 cm².",
+                  "id": "m1-einheiten-4"
+                }
               ]
             }
           }
@@ -41,27 +328,309 @@
             "quadratische-gleichungen": {
               "name": "Quadratische Gleichungen",
               "fragen": [
-                {"id": "m2-quad-1", "typ": "mc", "frage": "Die Lösungsformel für ax² + bx + c = 0 lautet x =", "optionen": ["(-b ± √(b²-4ac)) / (2a)", "(-b ± √(b²+4ac)) / (2a)", "(b ± √(b²-4ac)) / a", "(-b ± √(4ac-b²)) / (2a)"], "loesung": 0, "erklaerung": "Große Lösungsformel (Mitternachtsformel)."},
-                {"id": "m2-quad-2", "typ": "num", "frage": "Eine Lösung von x² - 5x + 6 = 0 ist x = 2. Wie lautet die zweite Lösung?", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "Nach Vieta: x1·x2 = 6, 2·x2 = 6, x2 = 3."},
-                {"id": "m2-quad-3", "typ": "num", "frage": "Berechne die Diskriminante von x² - 4x + 4 = 0.", "loesung": 0, "toleranz": 0.001, "einheit": "", "erklaerung": "D = b²-4ac = 16 - 16 = 0 (Doppellösung)."},
-                {"id": "m2-quad-4", "typ": "mc", "frage": "Was bedeutet eine negative Diskriminante (D < 0)?", "optionen": ["Zwei reelle Lösungen", "Eine reelle Lösung", "Keine reelle Lösung", "Unendlich viele Lösungen"], "loesung": 2, "erklaerung": "Bei D < 0 gibt es keine reellen, sondern konjugiert komplexe Lösungen."}
+                {
+                  "typ": "mc",
+                  "frage": "Lösungsformel für ax² + bx + c = 0:",
+                  "optionen": [
+                    "(-b ± √(b²-4ac))/(2a)",
+                    "(-b ± √(b²+4ac))/(2a)",
+                    "(b ± √(b²-4ac))/a",
+                    "(-b ± √(4ac-b²))/(2a)"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Große Lösungsformel.",
+                  "id": "m2-quadratische-gleichungen-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Eine Lösung von x² - 5x + 6 = 0 ist x = 2. Zweite Lösung?",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "Vieta: 2·x₂=6 → x₂=3.",
+                  "id": "m2-quadratische-gleichungen-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne die Diskriminante von x² - 4x + 4 = 0.",
+                  "loesung": 0.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "D = b²-4ac = 0.",
+                  "id": "m2-quadratische-gleichungen-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Was bedeutet D < 0?",
+                  "optionen": [
+                    "Zwei reelle Lösungen",
+                    "Eine reelle Lösung",
+                    "Keine reelle Lösung",
+                    "Unendlich viele"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "Keine reellen Lösungen.",
+                  "id": "m2-quadratische-gleichungen-4"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Positive Lösung von x² = 49?",
+                  "loesung": 7.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "√49 = 7.",
+                  "id": "m2-quadratische-gleichungen-5"
+                }
+              ]
+            },
+            "lineare-funktionen": {
+              "name": "Lineare Funktionen",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Steigung von y = 3x + 2?",
+                  "optionen": [
+                    "2",
+                    "3",
+                    "3x",
+                    "5"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "k = 3.",
+                  "id": "m2-lineare-funktionen-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Nullstelle (x-Wert) von y = 2x - 6?",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "2x-6=0 → x=3.",
+                  "id": "m2-lineare-funktionen-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "y-Achsenabschnitt (d) von y = -4x + 7?",
+                  "loesung": 7.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "d = 7.",
+                  "id": "m2-lineare-funktionen-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Steigung durch P(0|1) und Q(2|5)?",
+                  "loesung": 2.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "k = Δy/Δx = 4/2 = 2.",
+                  "id": "m2-lineare-funktionen-4"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Zwei Geraden sind parallel, wenn",
+                  "optionen": [
+                    "die d gleich sind",
+                    "die k gleich sind",
+                    "sie sich schneiden",
+                    "k·d = 0"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Gleiche Steigung k.",
+                  "id": "m2-lineare-funktionen-5"
+                }
+              ]
+            },
+            "quadratische-funktionen": {
+              "name": "Quadratische Funktionen",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Der Graph von y = x² ist eine",
+                  "optionen": [
+                    "Gerade",
+                    "Parabel",
+                    "Hyperbel",
+                    "Kreis"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Parabel.",
+                  "id": "m2-quadratische-funktionen-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Scheitel-x von y = x² - 6x + 5 (x = -b/2a)?",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "x = 6/2 = 3.",
+                  "id": "m2-quadratische-funktionen-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Eine Nullstelle von y = x² - 9 (positiv)?",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "x²=9 → x=±3.",
+                  "id": "m2-quadratische-funktionen-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Öffnet y = -2x² + 3 nach",
+                  "optionen": [
+                    "oben",
+                    "unten",
+                    "links",
+                    "rechts"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "a<0 → nach unten.",
+                  "id": "m2-quadratische-funktionen-4"
+                }
               ]
             },
             "trigonometrie": {
-              "name": "Trigonometrie im rechtwinkligen Dreieck",
+              "name": "Trigonometrie im Dreieck",
               "fragen": [
-                {"id": "m2-trig-1", "typ": "mc", "frage": "Im rechtwinkligen Dreieck gilt sin(α) =", "optionen": ["Ankathete / Hypotenuse", "Gegenkathete / Hypotenuse", "Gegenkathete / Ankathete", "Hypotenuse / Gegenkathete"], "loesung": 1, "erklaerung": "Sinus = Gegenkathete / Hypotenuse."},
-                {"id": "m2-trig-2", "typ": "num", "frage": "Berechne sin(30°). (Dezimalwert)", "loesung": 0.5, "toleranz": 0.01, "einheit": "", "erklaerung": "sin(30°) = 0,5."},
-                {"id": "m2-trig-3", "typ": "num", "frage": "Ein rechtwinkliges Dreieck hat Katheten 3 und 4. Wie lang ist die Hypotenuse?", "loesung": 5, "toleranz": 0.01, "einheit": "", "erklaerung": "√(3²+4²) = √25 = 5 (Satz des Pythagoras)."},
-                {"id": "m2-trig-4", "typ": "mc", "frage": "tan(α) ist definiert als", "optionen": ["sin(α)·cos(α)", "sin(α) / cos(α)", "cos(α) / sin(α)", "1 / sin(α)"], "loesung": 1, "erklaerung": "tan = sin/cos = Gegenkathete/Ankathete."}
+                {
+                  "typ": "mc",
+                  "frage": "sin(α) =",
+                  "optionen": [
+                    "Ankathete/Hypotenuse",
+                    "Gegenkathete/Hypotenuse",
+                    "Gegenkathete/Ankathete",
+                    "Hypotenuse/Gegenkathete"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Gegenkathete/Hypotenuse.",
+                  "id": "m2-trigonometrie-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne sin(30°) (Dezimal).",
+                  "loesung": 0.5,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "= 0,5.",
+                  "id": "m2-trigonometrie-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Hypotenuse bei Katheten 3 und 4?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "√(9+16)=5.",
+                  "id": "m2-trigonometrie-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne cos(60°) (Dezimal).",
+                  "loesung": 0.5,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "= 0,5.",
+                  "id": "m2-trigonometrie-4"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "tan(α) =",
+                  "optionen": [
+                    "sin·cos",
+                    "sin/cos",
+                    "cos/sin",
+                    "1/sin"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "tan = sin/cos.",
+                  "id": "m2-trigonometrie-5"
+                }
               ]
             },
-            "funktionen": {
-              "name": "Lineare & quadratische Funktionen",
+            "vektoren": {
+              "name": "Vektoren (2D)",
               "fragen": [
-                {"id": "m2-fkt-1", "typ": "mc", "frage": "Die Steigung der Geraden y = 3x + 2 beträgt", "optionen": ["2", "3", "3x", "5"], "loesung": 1, "erklaerung": "k = 3 (Koeffizient von x)."},
-                {"id": "m2-fkt-2", "typ": "num", "frage": "Wo schneidet y = 2x - 6 die x-Achse? (x-Wert)", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "2x - 6 = 0, x = 3."},
-                {"id": "m2-fkt-3", "typ": "mc", "frage": "Der Graph von y = x² ist eine", "optionen": ["Gerade", "Parabel", "Hyperbel", "Kreis"], "loesung": 1, "erklaerung": "Quadratische Funktion → nach oben geöffnete Parabel."}
+                {
+                  "typ": "num",
+                  "frage": "Länge des Vektors (3; 4)?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "√(3²+4²)=5.",
+                  "id": "m2-vektoren-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Summe (1;2) + (3;1) =",
+                  "optionen": [
+                    "(4;3)",
+                    "(3;2)",
+                    "(4;2)",
+                    "(2;1)"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Komponentenweise: (4;3).",
+                  "id": "m2-vektoren-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Skalarprodukt (2;3)·(1;4)?",
+                  "loesung": 14.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "2·1+3·4 = 14.",
+                  "id": "m2-vektoren-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Zwei Vektoren stehen normal (senkrecht), wenn ihr Skalarprodukt",
+                  "optionen": [
+                    "= 1 ist",
+                    "= 0 ist",
+                    "negativ ist",
+                    "= Länge ist"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Skalarprodukt = 0.",
+                  "id": "m2-vektoren-4"
+                }
+              ]
+            },
+            "gleichungssysteme": {
+              "name": "Lineare Gleichungssysteme",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Aus x + y = 10 und x - y = 2: x = ?",
+                  "loesung": 6.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "Addition: 2x=12 → x=6.",
+                  "id": "m2-gleichungssysteme-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Aus x + y = 10 und x - y = 2: y = ?",
+                  "loesung": 4.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "y = 4.",
+                  "id": "m2-gleichungssysteme-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ein LGS mit 2 Gleichungen und 2 Unbekannten hat i.d.R.",
+                  "optionen": [
+                    "keine Lösung",
+                    "genau eine Lösung",
+                    "immer unendlich viele",
+                    "drei Lösungen"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "I.d.R. genau eine.",
+                  "id": "m2-gleichungssysteme-3"
+                }
               ]
             }
           }
@@ -72,20 +641,260 @@
             "differentialrechnung": {
               "name": "Differentialrechnung",
               "fragen": [
-                {"id": "m3-diff-1", "typ": "mc", "frage": "Die Ableitung von f(x) = x³ ist", "optionen": ["3x²", "x²", "3x", "x⁴/4"], "loesung": 0, "erklaerung": "Potenzregel: f'(x) = 3x²."},
-                {"id": "m3-diff-2", "typ": "num", "frage": "Berechne f'(2) für f(x) = x².", "loesung": 4, "toleranz": 0.001, "einheit": "", "erklaerung": "f'(x) = 2x, f'(2) = 4."},
-                {"id": "m3-diff-3", "typ": "mc", "frage": "Die Ableitung von f(x) = sin(x) ist", "optionen": ["-sin(x)", "cos(x)", "-cos(x)", "tan(x)"], "loesung": 1, "erklaerung": "f'(x) = cos(x)."},
-                {"id": "m3-diff-4", "typ": "mc", "frage": "An einem lokalen Extremum einer differenzierbaren Funktion gilt", "optionen": ["f(x) = 0", "f'(x) = 0", "f''(x) = 0", "f'(x) = 1"], "loesung": 1, "erklaerung": "Notwendige Bedingung: erste Ableitung null."},
-                {"id": "m3-diff-5", "typ": "num", "frage": "Für f(x) = 3x² + 2x: berechne f'(1).", "loesung": 8, "toleranz": 0.001, "einheit": "", "erklaerung": "f'(x) = 6x + 2, f'(1) = 8."}
+                {
+                  "typ": "mc",
+                  "frage": "Ableitung von f(x) = x³?",
+                  "optionen": [
+                    "3x²",
+                    "x²",
+                    "3x",
+                    "x⁴/4"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Potenzregel: 3x².",
+                  "id": "m3-differentialrechnung-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "f'(2) für f(x) = x²?",
+                  "loesung": 4.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "f'(x)=2x → 4.",
+                  "id": "m3-differentialrechnung-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ableitung von sin(x)?",
+                  "optionen": [
+                    "-sin(x)",
+                    "cos(x)",
+                    "-cos(x)",
+                    "tan(x)"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "cos(x).",
+                  "id": "m3-differentialrechnung-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "f'(1) für f(x) = 3x² + 2x?",
+                  "loesung": 8.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "f'(x)=6x+2 → 8.",
+                  "id": "m3-differentialrechnung-4"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Bei einem Extremum gilt",
+                  "optionen": [
+                    "f(x)=0",
+                    "f'(x)=0",
+                    "f''(x)=1",
+                    "f'(x)=1"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "f'(x)=0.",
+                  "id": "m3-differentialrechnung-5"
+                }
+              ]
+            },
+            "kurvendiskussion": {
+              "name": "Kurvendiskussion",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Nullstelle von f(x) = 2x - 8?",
+                  "loesung": 4.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "2x-8=0 → x=4.",
+                  "id": "m3-kurvendiskussion-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ein Wendepunkt liegt vor, wenn",
+                  "optionen": [
+                    "f'(x)=0",
+                    "f''(x)=0 und VZW",
+                    "f(x)=0",
+                    "f'(x)=1"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "f''(x)=0 mit Vorzeichenwechsel.",
+                  "id": "m3-kurvendiskussion-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "f''(x) > 0 bedeutet die Funktion ist",
+                  "optionen": [
+                    "linksgekrümmt",
+                    "rechtsgekrümmt",
+                    "konstant",
+                    "fallend"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Linksgekrümmt (konvex).",
+                  "id": "m3-kurvendiskussion-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Extremstelle von f(x)=x²-6x+1 (f'(x)=2x-6)?",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "2x-6=0 → x=3.",
+                  "id": "m3-kurvendiskussion-4"
+                }
               ]
             },
             "exp-log": {
               "name": "Exponential- & Logarithmusfunktionen",
               "fragen": [
-                {"id": "m3-exp-1", "typ": "num", "frage": "Berechne log₁₀(1000).", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "10³ = 1000, also log = 3."},
-                {"id": "m3-exp-2", "typ": "mc", "frage": "Die Ableitung von f(x) = eˣ ist", "optionen": ["x·eˣ⁻¹", "eˣ", "1/x", "ln(x)"], "loesung": 1, "erklaerung": "e-Funktion ist ihre eigene Ableitung."},
-                {"id": "m3-exp-3", "typ": "num", "frage": "Berechne ln(1).", "loesung": 0, "toleranz": 0.001, "einheit": "", "erklaerung": "e⁰ = 1, also ln(1) = 0."},
-                {"id": "m3-exp-4", "typ": "mc", "frage": "Welches Gesetz gilt? log(a·b) =", "optionen": ["log(a)·log(b)", "log(a) + log(b)", "log(a) - log(b)", "log(a)/log(b)"], "loesung": 1, "erklaerung": "Logarithmus eines Produkts = Summe der Logarithmen."}
+                {
+                  "typ": "num",
+                  "frage": "Berechne log₁₀(1000).",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "10³=1000 → 3.",
+                  "id": "m3-exp-log-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ableitung von f(x) = eˣ?",
+                  "optionen": [
+                    "x·eˣ⁻¹",
+                    "eˣ",
+                    "1/x",
+                    "ln(x)"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "eˣ.",
+                  "id": "m3-exp-log-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne ln(1).",
+                  "loesung": 0.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "e⁰=1 → 0.",
+                  "id": "m3-exp-log-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "log(a·b) =",
+                  "optionen": [
+                    "log a · log b",
+                    "log a + log b",
+                    "log a - log b",
+                    "log a / log b"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Produkt → Summe.",
+                  "id": "m3-exp-log-4"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne log₂(8).",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "2³=8 → 3.",
+                  "id": "m3-exp-log-5"
+                }
+              ]
+            },
+            "folgen-reihen": {
+              "name": "Folgen & Reihen",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Arithmetische Folge a₁=2, d=3. a₅ = ?",
+                  "loesung": 14.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "aₙ=a₁+(n-1)d = 2+12 = 14.",
+                  "id": "m3-folgen-reihen-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Geometrische Folge a₁=3, q=2. a₄ = ?",
+                  "loesung": 24.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "aₙ=a₁·q^(n-1)=3·8=24.",
+                  "id": "m3-folgen-reihen-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Summe 1+2+3+...+10?",
+                  "loesung": 55.0,
+                  "toleranz": 0.1,
+                  "einheit": "",
+                  "erklaerung": "n(n+1)/2 = 55.",
+                  "id": "m3-folgen-reihen-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Bei einer arithmetischen Folge ist konstant",
+                  "optionen": [
+                    "der Quotient q",
+                    "die Differenz d",
+                    "das erste Glied",
+                    "die Summe"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Konstante Differenz d.",
+                  "id": "m3-folgen-reihen-4"
+                }
+              ]
+            },
+            "trig-funktionen": {
+              "name": "Trigonometrische Funktionen",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Periode von sin(x) in Grad?",
+                  "loesung": 360.0,
+                  "toleranz": 1,
+                  "einheit": "°",
+                  "erklaerung": "sin hat Periode 360°.",
+                  "id": "m3-trig-funktionen-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Wertebereich von sin(x)?",
+                  "optionen": [
+                    "[0;1]",
+                    "[-1;1]",
+                    "[-∞;∞]",
+                    "[0;∞]"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "sin liegt zwischen -1 und 1.",
+                  "id": "m3-trig-funktionen-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne sin(90°).",
+                  "loesung": 1.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "= 1.",
+                  "id": "m3-trig-funktionen-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Berechne cos(0°).",
+                  "loesung": 1.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "= 1.",
+                  "id": "m3-trig-funktionen-4"
+                }
               ]
             }
           }
@@ -96,18 +905,238 @@
             "integralrechnung": {
               "name": "Integralrechnung",
               "fragen": [
-                {"id": "m4-int-1", "typ": "mc", "frage": "Die Stammfunktion von f(x) = 2x ist", "optionen": ["2", "x² + C", "2x² + C", "x + C"], "loesung": 1, "erklaerung": "∫2x dx = x² + C."},
-                {"id": "m4-int-2", "typ": "num", "frage": "Berechne das bestimmte Integral ∫₀² 2x dx.", "loesung": 4, "toleranz": 0.001, "einheit": "", "erklaerung": "[x²]₀² = 4 - 0 = 4."},
-                {"id": "m4-int-3", "typ": "mc", "frage": "∫ eˣ dx =", "optionen": ["eˣ + C", "x·eˣ + C", "eˣ⁺¹ + C", "ln(x) + C"], "loesung": 0, "erklaerung": "Stammfunktion von eˣ ist eˣ + C."},
-                {"id": "m4-int-4", "typ": "num", "frage": "Berechne ∫₁³ 1 dx.", "loesung": 2, "toleranz": 0.001, "einheit": "", "erklaerung": "[x]₁³ = 3 - 1 = 2."}
+                {
+                  "typ": "mc",
+                  "frage": "Stammfunktion von f(x) = 2x?",
+                  "optionen": [
+                    "2",
+                    "x² + C",
+                    "2x² + C",
+                    "x + C"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "∫2x dx = x²+C.",
+                  "id": "m4-integralrechnung-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Bestimmtes Integral ∫₀² 2x dx?",
+                  "loesung": 4.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "[x²]₀² = 4.",
+                  "id": "m4-integralrechnung-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "∫ eˣ dx =",
+                  "optionen": [
+                    "eˣ + C",
+                    "x·eˣ + C",
+                    "eˣ⁺¹ + C",
+                    "ln x + C"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "eˣ+C.",
+                  "id": "m4-integralrechnung-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "∫₁³ 1 dx = ?",
+                  "loesung": 2.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "[x]₁³ = 2.",
+                  "id": "m4-integralrechnung-4"
+                },
+                {
+                  "typ": "num",
+                  "frage": "∫₀³ x² dx = ? (Stammfkt. x³/3)",
+                  "loesung": 9.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "27/3 = 9.",
+                  "id": "m4-integralrechnung-5"
+                }
               ]
             },
             "komplexe-zahlen": {
               "name": "Komplexe Zahlen",
               "fragen": [
-                {"id": "m4-kplx-1", "typ": "mc", "frage": "Die imaginäre Einheit i erfüllt", "optionen": ["i² = 1", "i² = -1", "i = -1", "i² = 0"], "loesung": 1, "erklaerung": "Definition: i² = -1."},
-                {"id": "m4-kplx-2", "typ": "mc", "frage": "Der Betrag von z = 3 + 4i ist", "optionen": ["7", "5", "12", "25"], "loesung": 1, "erklaerung": "|z| = √(3²+4²) = 5."},
-                {"id": "m4-kplx-3", "typ": "mc", "frage": "Die konjugiert komplexe Zahl zu z = 2 - 5i ist", "optionen": ["-2 + 5i", "2 + 5i", "-2 - 5i", "5 - 2i"], "loesung": 1, "erklaerung": "Vorzeichen des Imaginärteils umkehren: 2 + 5i."}
+                {
+                  "typ": "mc",
+                  "frage": "i² =",
+                  "optionen": [
+                    "1",
+                    "-1",
+                    "i",
+                    "0"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Definition i²=-1.",
+                  "id": "m4-komplexe-zahlen-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Betrag von z = 3 + 4i?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "√(3²+4²)=5.",
+                  "id": "m4-komplexe-zahlen-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Konjugiert komplexe Zahl zu 2 - 5i?",
+                  "optionen": [
+                    "-2+5i",
+                    "2+5i",
+                    "-2-5i",
+                    "5-2i"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "2+5i.",
+                  "id": "m4-komplexe-zahlen-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Summe (1+2i)+(3+i) =",
+                  "optionen": [
+                    "4+3i",
+                    "4+2i",
+                    "3+3i",
+                    "4+i"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Real- und Imaginärteil addieren: 4+3i.",
+                  "id": "m4-komplexe-zahlen-4"
+                }
+              ]
+            },
+            "statistik": {
+              "name": "Beschreibende Statistik",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Mittelwert von 4, 8, 10, 6, 2?",
+                  "loesung": 6.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "30/5 = 6.",
+                  "id": "m4-statistik-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Median von 3, 7, 2, 9, 5 (sortiert)?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "2,3,5,7,9 → 5.",
+                  "id": "m4-statistik-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Spannweite von 12, 4, 9, 20, 7?",
+                  "loesung": 16.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "Max-Min = 20-4 = 16.",
+                  "id": "m4-statistik-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Der Modus ist",
+                  "optionen": [
+                    "der Mittelwert",
+                    "der häufigste Wert",
+                    "der mittlere Wert",
+                    "die Summe"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Häufigster Wert.",
+                  "id": "m4-statistik-4"
+                }
+              ]
+            },
+            "wahrscheinlichkeit": {
+              "name": "Wahrscheinlichkeit",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "P(6) bei fairem Würfel (Dezimal, 3 Stellen)?",
+                  "loesung": 0.166667,
+                  "toleranz": 0.002,
+                  "einheit": "",
+                  "erklaerung": "1/6 ≈ 0,167.",
+                  "id": "m4-wahrscheinlichkeit-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "P(zweimal Kopf) bei 2 Münzen (Dezimal)?",
+                  "loesung": 0.25,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "0,5·0,5 = 0,25.",
+                  "id": "m4-wahrscheinlichkeit-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Summe aller Wahrscheinlichkeiten?",
+                  "optionen": [
+                    "0",
+                    "0,5",
+                    "1",
+                    "100"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "Normierung = 1.",
+                  "id": "m4-wahrscheinlichkeit-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "P(gerade Zahl) bei fairem Würfel (Dezimal)?",
+                  "loesung": 0.5,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "{2,4,6} → 3/6 = 0,5.",
+                  "id": "m4-wahrscheinlichkeit-4"
+                }
+              ]
+            },
+            "vektoren-3d": {
+              "name": "Vektoren im Raum",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Länge des Vektors (2; 3; 6)?",
+                  "loesung": 7.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "√(4+9+36)=√49=7.",
+                  "id": "m4-vektoren-3d-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Skalarprodukt (1;2;3)·(4;0;1)?",
+                  "loesung": 7.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "4+0+3 = 7.",
+                  "id": "m4-vektoren-3d-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ein Vektor im Raum hat",
+                  "optionen": [
+                    "1 Komponente",
+                    "2 Komponenten",
+                    "3 Komponenten",
+                    "4 Komponenten"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "3 Komponenten (x,y,z).",
+                  "id": "m4-vektoren-3d-3"
+                }
               ]
             }
           }
@@ -115,20 +1144,173 @@
         "5": {
           "name": "HTL 5. Klasse",
           "themen": {
-            "wahrscheinlichkeit": {
-              "name": "Wahrscheinlichkeit & Statistik",
+            "differentialgleichungen": {
+              "name": "Differentialgleichungen",
               "fragen": [
-                {"id": "m5-wsk-1", "typ": "num", "frage": "Wie groß ist die Wahrscheinlichkeit, mit einem fairen Würfel eine 6 zu werfen? (Dezimal, gerundet auf 3 Stellen)", "loesung": 0.167, "toleranz": 0.002, "einheit": "", "erklaerung": "1/6 ≈ 0,167."},
-                {"id": "m5-wsk-2", "typ": "num", "frage": "Berechne den Mittelwert von 4, 8, 10, 6, 2.", "loesung": 6, "toleranz": 0.01, "einheit": "", "erklaerung": "(4+8+10+6+2)/5 = 30/5 = 6."},
-                {"id": "m5-wsk-3", "typ": "mc", "frage": "Die Summe aller Wahrscheinlichkeiten eines Zufallsexperiments ist", "optionen": ["0", "0,5", "1", "100"], "loesung": 2, "erklaerung": "Normierung: Gesamtwahrscheinlichkeit = 1."},
-                {"id": "m5-wsk-4", "typ": "num", "frage": "Zwei faire Münzen: Wahrscheinlichkeit für zweimal Kopf? (Dezimal)", "loesung": 0.25, "toleranz": 0.001, "einheit": "", "erklaerung": "0,5·0,5 = 0,25."}
+                {
+                  "typ": "mc",
+                  "frage": "Lösung von y' = y?",
+                  "optionen": [
+                    "y = x²",
+                    "y = C·eˣ",
+                    "y = sin x",
+                    "y = ln x"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "y = C·eˣ.",
+                  "id": "m5-differentialgleichungen-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ordnung einer DGL = höchste vorkommende",
+                  "optionen": [
+                    "Funktion",
+                    "Ableitung",
+                    "Konstante",
+                    "Variable"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Höchste Ableitung.",
+                  "id": "m5-differentialgleichungen-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "y' = k·y beschreibt",
+                  "optionen": [
+                    "lineares Wachstum",
+                    "exponentielles Wachstum",
+                    "konstante Funktion",
+                    "Schwingung"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Exponentielles Wachstum/Zerfall.",
+                  "id": "m5-differentialgleichungen-3"
+                }
               ]
             },
-            "differentialgleichungen": {
-              "name": "Differentialgleichungen (Einführung)",
+            "verteilungen": {
+              "name": "Wahrscheinlichkeitsverteilungen",
               "fragen": [
-                {"id": "m5-dgl-1", "typ": "mc", "frage": "Die Lösung von y' = y ist", "optionen": ["y = x²", "y = C·eˣ", "y = sin(x)", "y = ln(x)"], "loesung": 1, "erklaerung": "Exponentielles Wachstum: y = C·eˣ."},
-                {"id": "m5-dgl-2", "typ": "mc", "frage": "Eine Differentialgleichung 1. Ordnung enthält höchstens", "optionen": ["die Funktion selbst", "die erste Ableitung", "die zweite Ableitung", "die dritte Ableitung"], "loesung": 1, "erklaerung": "Ordnung = höchste vorkommende Ableitung, hier y'."}
+                {
+                  "typ": "num",
+                  "frage": "Erwartungswert beim Würfel (1..6)?",
+                  "loesung": 3.5,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "(1+..+6)/6 = 3,5.",
+                  "id": "m5-verteilungen-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Binomialverteilung beschreibt",
+                  "optionen": [
+                    "stetige Daten",
+                    "Anzahl Erfolge bei n Versuchen",
+                    "Mittelwerte",
+                    "Zeitreihen"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Erfolge bei n Bernoulli-Versuchen.",
+                  "id": "m5-verteilungen-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Gauß-Verteilung hat die Form einer",
+                  "optionen": [
+                    "Geraden",
+                    "Glockenkurve",
+                    "Treppe",
+                    "Parabel"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Glockenkurve.",
+                  "id": "m5-verteilungen-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Binomial: n=10, p=0,5. Erwartungswert μ = n·p?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "μ = n·p = 5.",
+                  "id": "m5-verteilungen-4"
+                }
+              ]
+            },
+            "beurteilende-statistik": {
+              "name": "Beurteilende Statistik",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Ein Konfidenzintervall gibt an",
+                  "optionen": [
+                    "den exakten Wert",
+                    "einen Bereich für den Parameter",
+                    "den Mittelwert",
+                    "die Summe"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Bereich, in dem der Parameter mit best. Sicherheit liegt.",
+                  "id": "m5-beurteilende-statistik-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ein übliches Konfidenzniveau ist",
+                  "optionen": [
+                    "5 %",
+                    "50 %",
+                    "95 %",
+                    "150 %"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "Häufig 95 %.",
+                  "id": "m5-beurteilende-statistik-2"
+                }
+              ]
+            },
+            "matura-mix": {
+              "name": "Matura-Mix (gemischt)",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Ableitung von f(x)=x² an der Stelle x=3?",
+                  "loesung": 6.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "f'(x)=2x → 6.",
+                  "id": "m5-matura-mix-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "∫₀¹ 2x dx?",
+                  "loesung": 1.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "[x²]₀¹ = 1.",
+                  "id": "m5-matura-mix-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "15 % von 240?",
+                  "loesung": 36.0,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "= 36.",
+                  "id": "m5-matura-mix-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "sin²α + cos²α =",
+                  "optionen": [
+                    "0",
+                    "1",
+                    "2",
+                    "tan α"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Trigonometrischer Pythagoras = 1.",
+                  "id": "m5-matura-mix-4"
+                }
               ]
             }
           }
@@ -141,22 +1323,250 @@
         "1": {
           "name": "HTL 1. Klasse",
           "themen": {
-            "kinematik": {
-              "name": "Kinematik (gleichförmige Bewegung)",
+            "groessen-einheiten": {
+              "name": "Größen & Einheiten",
               "fragen": [
-                {"id": "p1-kin-1", "typ": "mc", "frage": "Die Einheit der Geschwindigkeit im SI-System ist", "optionen": ["km/h", "m/s", "m/s²", "N"], "loesung": 1, "erklaerung": "SI-Einheit: Meter pro Sekunde."},
-                {"id": "p1-kin-2", "typ": "num", "frage": "Ein Auto fährt 150 km in 2 h. Wie groß ist die Durchschnittsgeschwindigkeit in km/h?", "loesung": 75, "toleranz": 0.1, "einheit": "km/h", "erklaerung": "v = s/t = 150/2 = 75 km/h."},
-                {"id": "p1-kin-3", "typ": "num", "frage": "Wandle 72 km/h in m/s um.", "loesung": 20, "toleranz": 0.1, "einheit": "m/s", "erklaerung": "72 / 3,6 = 20 m/s."},
-                {"id": "p1-kin-4", "typ": "num", "frage": "Mit 10 m/s: welche Strecke in 5 s? (gleichförmig)", "loesung": 50, "toleranz": 0.1, "einheit": "m", "erklaerung": "s = v·t = 10·5 = 50 m."}
+                {
+                  "typ": "mc",
+                  "frage": "SI-Einheit der Länge?",
+                  "optionen": [
+                    "cm",
+                    "m",
+                    "km",
+                    "mm"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Meter.",
+                  "id": "p1-groessen-einheiten-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "SI-Einheit der Kraft?",
+                  "optionen": [
+                    "Joule",
+                    "Newton",
+                    "Watt",
+                    "Pascal"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Newton.",
+                  "id": "p1-groessen-einheiten-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Wandle 72 km/h in m/s um.",
+                  "loesung": 20.0,
+                  "toleranz": 0.1,
+                  "einheit": "m/s",
+                  "erklaerung": "72/3,6 = 20.",
+                  "id": "p1-groessen-einheiten-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Wandle 250 g in kg um.",
+                  "loesung": 0.25,
+                  "toleranz": 0.001,
+                  "einheit": "kg",
+                  "erklaerung": "= 0,25 kg.",
+                  "id": "p1-groessen-einheiten-4"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Basisgröße Zeit hat die Einheit",
+                  "optionen": [
+                    "Meter",
+                    "Sekunde",
+                    "Kelvin",
+                    "Mol"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Sekunde.",
+                  "id": "p1-groessen-einheiten-5"
+                }
               ]
             },
-            "kraefte": {
+            "kinematik-gleichfoermig": {
+              "name": "Kinematik (gleichförmig)",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Einheit der Geschwindigkeit (SI)?",
+                  "optionen": [
+                    "km/h",
+                    "m/s",
+                    "m/s²",
+                    "N"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "m/s.",
+                  "id": "p1-kinematik-gleichfoermig-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "150 km in 2 h: Durchschnittsgeschwindigkeit?",
+                  "loesung": 75.0,
+                  "toleranz": 0.1,
+                  "einheit": "km/h",
+                  "erklaerung": "v=s/t=75.",
+                  "id": "p1-kinematik-gleichfoermig-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Mit 10 m/s: Strecke in 5 s (gleichförmig)?",
+                  "loesung": 50.0,
+                  "toleranz": 0.1,
+                  "einheit": "m",
+                  "erklaerung": "s=v·t=50.",
+                  "id": "p1-kinematik-gleichfoermig-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Zeit für 300 m bei 15 m/s?",
+                  "loesung": 20.0,
+                  "toleranz": 0.1,
+                  "einheit": "s",
+                  "erklaerung": "t=s/v=20.",
+                  "id": "p1-kinematik-gleichfoermig-4"
+                }
+              ]
+            },
+            "kinematik-beschleunigt": {
+              "name": "Kinematik (beschleunigt)",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Beschleunigung: von 0 auf 20 m/s in 4 s?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "m/s²",
+                  "erklaerung": "a=Δv/t=5.",
+                  "id": "p1-kinematik-beschleunigt-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Freier Fall: Geschwindigkeit nach 3 s (g=9,81)?",
+                  "loesung": 29.43,
+                  "toleranz": 0.1,
+                  "einheit": "m/s",
+                  "erklaerung": "v=g·t≈29,43.",
+                  "id": "p1-kinematik-beschleunigt-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Freier Fall: Fallstrecke in 2 s (s=½g t²)?",
+                  "loesung": 19.62,
+                  "toleranz": 0.2,
+                  "einheit": "m",
+                  "erklaerung": "s=½·9,81·4≈19,62.",
+                  "id": "p1-kinematik-beschleunigt-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Einheit der Beschleunigung?",
+                  "optionen": [
+                    "m/s",
+                    "m/s²",
+                    "N",
+                    "J"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "m/s².",
+                  "id": "p1-kinematik-beschleunigt-4"
+                }
+              ]
+            },
+            "kraefte-dichte": {
               "name": "Kräfte & Dichte",
               "fragen": [
-                {"id": "p1-kraft-1", "typ": "mc", "frage": "Die Einheit der Kraft ist", "optionen": ["Joule (J)", "Newton (N)", "Watt (W)", "Pascal (Pa)"], "loesung": 1, "erklaerung": "Kraft wird in Newton gemessen."},
-                {"id": "p1-kraft-2", "typ": "num", "frage": "Welche Gewichtskraft wirkt auf 5 kg? (g = 9,81 m/s², in N)", "loesung": 49.05, "toleranz": 0.5, "einheit": "N", "erklaerung": "F = m·g = 5·9,81 = 49,05 N."},
-                {"id": "p1-kraft-3", "typ": "num", "frage": "Dichte von 200 g auf 250 cm³? (in g/cm³)", "loesung": 0.8, "toleranz": 0.01, "einheit": "g/cm³", "erklaerung": "ρ = m/V = 200/250 = 0,8 g/cm³."},
-                {"id": "p1-kraft-4", "typ": "mc", "frage": "Das newtonsche Grundgesetz lautet", "optionen": ["F = m/a", "F = m·a", "F = a/m", "F = m·v"], "loesung": 1, "erklaerung": "Kraft = Masse · Beschleunigung."}
+                {
+                  "typ": "mc",
+                  "frage": "Newtonsches Grundgesetz?",
+                  "optionen": [
+                    "F=m/a",
+                    "F=m·a",
+                    "F=a/m",
+                    "F=m·v"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "F=m·a.",
+                  "id": "p1-kraefte-dichte-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Gewichtskraft von 5 kg (g=9,81)?",
+                  "loesung": 49.05,
+                  "toleranz": 0.5,
+                  "einheit": "N",
+                  "erklaerung": "F=m·g≈49,05.",
+                  "id": "p1-kraefte-dichte-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Dichte von 200 g auf 250 cm³?",
+                  "loesung": 0.8,
+                  "toleranz": 0.01,
+                  "einheit": "g/cm³",
+                  "erklaerung": "ρ=m/V=0,8.",
+                  "id": "p1-kraefte-dichte-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Masse bei ρ=2 g/cm³ und V=50 cm³?",
+                  "loesung": 100.0,
+                  "toleranz": 0.1,
+                  "einheit": "g",
+                  "erklaerung": "m=ρ·V=100.",
+                  "id": "p1-kraefte-dichte-4"
+                }
+              ]
+            },
+            "druck": {
+              "name": "Druck",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Einheit des Drucks?",
+                  "optionen": [
+                    "Newton",
+                    "Pascal",
+                    "Joule",
+                    "Watt"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Pascal = N/m².",
+                  "id": "p1-druck-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Druck: 200 N auf 0,5 m²?",
+                  "loesung": 400.0,
+                  "toleranz": 1,
+                  "einheit": "Pa",
+                  "erklaerung": "p=F/A=400.",
+                  "id": "p1-druck-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Kraft bei p=1000 Pa auf A=2 m²?",
+                  "loesung": 2000.0,
+                  "toleranz": 1,
+                  "einheit": "N",
+                  "erklaerung": "F=p·A=2000.",
+                  "id": "p1-druck-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Wie viel Pascal sind 1 bar?",
+                  "optionen": [
+                    "100 Pa",
+                    "1000 Pa",
+                    "100 000 Pa",
+                    "1 Pa"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "1 bar = 10⁵ Pa.",
+                  "id": "p1-druck-4"
+                }
               ]
             }
           }
@@ -164,21 +1574,249 @@
         "2": {
           "name": "HTL 2. Klasse",
           "themen": {
+            "dynamik": {
+              "name": "Dynamik (Newton'sche Gesetze)",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Das Trägheitsgesetz ist Newtons",
+                  "optionen": [
+                    "1. Gesetz",
+                    "2. Gesetz",
+                    "3. Gesetz",
+                    "Gravitationsgesetz"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "1. Newton'sches Gesetz.",
+                  "id": "p2-dynamik-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Kraft, um 10 kg mit 3 m/s² zu beschleunigen?",
+                  "loesung": 30.0,
+                  "toleranz": 0.1,
+                  "einheit": "N",
+                  "erklaerung": "F=m·a=30.",
+                  "id": "p2-dynamik-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Beschleunigung: 50 N auf 10 kg?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "m/s²",
+                  "erklaerung": "a=F/m=5.",
+                  "id": "p2-dynamik-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "'Actio = Reactio' ist Newtons",
+                  "optionen": [
+                    "1. Gesetz",
+                    "2. Gesetz",
+                    "3. Gesetz",
+                    "0. Gesetz"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "3. Gesetz.",
+                  "id": "p2-dynamik-4"
+                }
+              ]
+            },
             "energie": {
               "name": "Arbeit, Energie & Leistung",
               "fragen": [
-                {"id": "p2-en-1", "typ": "mc", "frage": "Die Einheit der Energie ist", "optionen": ["Newton (N)", "Joule (J)", "Watt (W)", "Volt (V)"], "loesung": 1, "erklaerung": "Energie und Arbeit werden in Joule gemessen."},
-                {"id": "p2-en-2", "typ": "num", "frage": "Hubarbeit, um 10 kg um 2 m zu heben? (g = 9,81 m/s², in J)", "loesung": 196.2, "toleranz": 1, "einheit": "J", "erklaerung": "W = m·g·h = 10·9,81·2 = 196,2 J."},
-                {"id": "p2-en-3", "typ": "num", "frage": "Kinetische Energie von 2 kg bei 3 m/s? (in J)", "loesung": 9, "toleranz": 0.1, "einheit": "J", "erklaerung": "E = ½mv² = 0,5·2·9 = 9 J."},
-                {"id": "p2-en-4", "typ": "num", "frage": "Leistung, wenn 600 J in 3 s verrichtet werden? (in W)", "loesung": 200, "toleranz": 0.5, "einheit": "W", "erklaerung": "P = W/t = 600/3 = 200 W."}
+                {
+                  "typ": "mc",
+                  "frage": "Einheit der Energie?",
+                  "optionen": [
+                    "Newton",
+                    "Joule",
+                    "Watt",
+                    "Volt"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Joule.",
+                  "id": "p2-energie-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Hubarbeit: 10 kg um 2 m heben (g=9,81)?",
+                  "loesung": 196.2,
+                  "toleranz": 1,
+                  "einheit": "J",
+                  "erklaerung": "W=m·g·h≈196,2.",
+                  "id": "p2-energie-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Kinetische Energie: 2 kg bei 3 m/s?",
+                  "loesung": 9.0,
+                  "toleranz": 0.1,
+                  "einheit": "J",
+                  "erklaerung": "E=½mv²=9.",
+                  "id": "p2-energie-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Leistung: 600 J in 3 s?",
+                  "loesung": 200.0,
+                  "toleranz": 0.5,
+                  "einheit": "W",
+                  "erklaerung": "P=W/t=200.",
+                  "id": "p2-energie-4"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "1 kW entspricht",
+                  "optionen": [
+                    "100 W",
+                    "1000 W",
+                    "10 W",
+                    "1 000 000 W"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "1 kW = 1000 W.",
+                  "id": "p2-energie-5"
+                }
+              ]
+            },
+            "impuls": {
+              "name": "Impuls",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Impuls: 4 kg bei 5 m/s?",
+                  "loesung": 20.0,
+                  "toleranz": 0.1,
+                  "einheit": "kg·m/s",
+                  "erklaerung": "p=m·v=20.",
+                  "id": "p2-impuls-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Einheit des Impulses?",
+                  "optionen": [
+                    "N",
+                    "kg·m/s",
+                    "J",
+                    "W"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "kg·m/s.",
+                  "id": "p2-impuls-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Geschwindigkeit bei p=30 kg·m/s und m=6 kg?",
+                  "loesung": 5.0,
+                  "toleranz": 0.01,
+                  "einheit": "m/s",
+                  "erklaerung": "v=p/m=5.",
+                  "id": "p2-impuls-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Der Impuls bleibt erhalten in einem",
+                  "optionen": [
+                    "offenen System",
+                    "abgeschlossenen System",
+                    "beschleunigten System",
+                    "warmen System"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Impulserhaltung im abgeschlossenen System.",
+                  "id": "p2-impuls-4"
+                }
               ]
             },
             "waermelehre": {
               "name": "Wärmelehre",
               "fragen": [
-                {"id": "p2-waerme-1", "typ": "num", "frage": "0 °C entsprechen wie viel Kelvin?", "loesung": 273.15, "toleranz": 0.5, "einheit": "K", "erklaerung": "T(K) = T(°C) + 273,15."},
-                {"id": "p2-waerme-2", "typ": "mc", "frage": "Die Wärmemenge berechnet sich mit", "optionen": ["Q = m·c·ΔT", "Q = m·g·h", "Q = ½mv²", "Q = U·I"], "loesung": 0, "erklaerung": "Q = Masse · spezifische Wärmekapazität · Temperaturdifferenz."},
-                {"id": "p2-waerme-3", "typ": "mc", "frage": "Bei welchem Vorgang geht ein Stoff von fest zu flüssig über?", "optionen": ["Verdampfen", "Schmelzen", "Sublimieren", "Kondensieren"], "loesung": 1, "erklaerung": "Fest → flüssig heißt Schmelzen."}
+                {
+                  "typ": "num",
+                  "frage": "0 °C in Kelvin?",
+                  "loesung": 273.15,
+                  "toleranz": 0.5,
+                  "einheit": "K",
+                  "erklaerung": "T(K)=T(°C)+273,15.",
+                  "id": "p2-waermelehre-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "100 °C in Kelvin?",
+                  "loesung": 373.15,
+                  "toleranz": 0.5,
+                  "einheit": "K",
+                  "erklaerung": "= 373,15 K.",
+                  "id": "p2-waermelehre-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Wärmemenge Q =",
+                  "optionen": [
+                    "m·c·ΔT",
+                    "m·g·h",
+                    "½mv²",
+                    "U·I"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Q=m·c·ΔT.",
+                  "id": "p2-waermelehre-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Fest → flüssig heißt",
+                  "optionen": [
+                    "Verdampfen",
+                    "Schmelzen",
+                    "Sublimieren",
+                    "Kondensieren"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Schmelzen.",
+                  "id": "p2-waermelehre-4"
+                }
+              ]
+            },
+            "gase": {
+              "name": "Gasgesetze",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Allgemeine Gasgleichung?",
+                  "optionen": [
+                    "p·V=n·R·T",
+                    "p·V=m·g·h",
+                    "p=R/T",
+                    "V=p·T"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Ideales Gas: pV=nRT.",
+                  "id": "p2-gase-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Bei konstanter Temperatur gilt (Boyle-Mariotte)",
+                  "optionen": [
+                    "p·V = const",
+                    "p/V = const",
+                    "p+V = const",
+                    "p=V"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "p·V konstant.",
+                  "id": "p2-gase-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Verdoppelt man p bei T=const, wird V ...-fach? (Faktor)",
+                  "loesung": 0.5,
+                  "toleranz": 0.01,
+                  "einheit": "",
+                  "erklaerung": "V halbiert sich → Faktor 0,5.",
+                  "id": "p2-gase-3"
+                }
               ]
             }
           }
@@ -187,21 +1825,182 @@
           "name": "HTL 3. Klasse",
           "themen": {
             "elektrizitaet": {
-              "name": "Elektrizitätslehre (Gleichstrom)",
+              "name": "Elektrizität (Gleichstrom)",
               "fragen": [
-                {"id": "p3-el-1", "typ": "mc", "frage": "Das ohmsche Gesetz lautet", "optionen": ["U = R/I", "U = R·I", "U = I/R", "U = P·I"], "loesung": 1, "erklaerung": "Spannung = Widerstand · Strom."},
-                {"id": "p3-el-2", "typ": "num", "frage": "Welcher Strom fließt bei U = 12 V und R = 4 Ω? (in A)", "loesung": 3, "toleranz": 0.01, "einheit": "A", "erklaerung": "I = U/R = 12/4 = 3 A."},
-                {"id": "p3-el-3", "typ": "num", "frage": "Elektrische Leistung bei U = 230 V und I = 2 A? (in W)", "loesung": 460, "toleranz": 1, "einheit": "W", "erklaerung": "P = U·I = 230·2 = 460 W."},
-                {"id": "p3-el-4", "typ": "num", "frage": "Zwei Widerstände 3 Ω und 6 Ω in Serie. Gesamtwiderstand? (in Ω)", "loesung": 9, "toleranz": 0.1, "einheit": "Ω", "erklaerung": "Serie: R = R1 + R2 = 9 Ω."},
-                {"id": "p3-el-5", "typ": "mc", "frage": "Die Einheit der elektrischen Ladung ist", "optionen": ["Ampere (A)", "Coulomb (C)", "Volt (V)", "Ohm (Ω)"], "loesung": 1, "erklaerung": "Ladung Q wird in Coulomb gemessen."}
+                {
+                  "typ": "mc",
+                  "frage": "Ohmsches Gesetz?",
+                  "optionen": [
+                    "U=R/I",
+                    "U=R·I",
+                    "U=I/R",
+                    "U=P·I"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "U=R·I.",
+                  "id": "p3-elektrizitaet-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Strom bei U=12 V, R=4 Ω?",
+                  "loesung": 3.0,
+                  "toleranz": 0.01,
+                  "einheit": "A",
+                  "erklaerung": "I=U/R=3.",
+                  "id": "p3-elektrizitaet-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Leistung bei U=230 V, I=2 A?",
+                  "loesung": 460.0,
+                  "toleranz": 1,
+                  "einheit": "W",
+                  "erklaerung": "P=U·I=460.",
+                  "id": "p3-elektrizitaet-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Gesamtwiderstand 3 Ω + 6 Ω in Serie?",
+                  "loesung": 9.0,
+                  "toleranz": 0.1,
+                  "einheit": "Ω",
+                  "erklaerung": "Serie: R=R₁+R₂=9.",
+                  "id": "p3-elektrizitaet-4"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Gesamtwiderstand 6 Ω ∥ 3 Ω (parallel)?",
+                  "loesung": 2.0,
+                  "toleranz": 0.05,
+                  "einheit": "Ω",
+                  "erklaerung": "1/R=1/6+1/3 → R=2.",
+                  "id": "p3-elektrizitaet-5"
+                }
+              ]
+            },
+            "magnetismus": {
+              "name": "Magnetismus",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Gleichnamige Magnetpole",
+                  "optionen": [
+                    "ziehen sich an",
+                    "stoßen sich ab",
+                    "tun nichts",
+                    "verschmelzen"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Gleichnamige Pole stoßen sich ab.",
+                  "id": "p3-magnetismus-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Ein stromdurchflossener Leiter erzeugt",
+                  "optionen": [
+                    "ein elektrisches Feld",
+                    "ein Magnetfeld",
+                    "Wärme nur",
+                    "Licht"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Magnetfeld um den Leiter.",
+                  "id": "p3-magnetismus-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Einheit der magnetischen Flussdichte?",
+                  "optionen": [
+                    "Tesla",
+                    "Weber",
+                    "Henry",
+                    "Gauß (SI: Tesla)"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Tesla.",
+                  "id": "p3-magnetismus-3"
+                }
               ]
             },
             "schwingungen": {
               "name": "Schwingungen & Wellen",
               "fragen": [
-                {"id": "p3-schw-1", "typ": "mc", "frage": "Die Frequenz hat die Einheit", "optionen": ["Sekunde (s)", "Hertz (Hz)", "Meter (m)", "Watt (W)"], "loesung": 1, "erklaerung": "f in Hertz = 1/s."},
-                {"id": "p3-schw-2", "typ": "num", "frage": "Periodendauer bei f = 50 Hz? (in s)", "loesung": 0.02, "toleranz": 0.001, "einheit": "s", "erklaerung": "T = 1/f = 1/50 = 0,02 s."},
-                {"id": "p3-schw-3", "typ": "num", "frage": "Wellenlänge bei v = 340 m/s und f = 170 Hz? (in m)", "loesung": 2, "toleranz": 0.05, "einheit": "m", "erklaerung": "λ = v/f = 340/170 = 2 m."}
+                {
+                  "typ": "mc",
+                  "frage": "Einheit der Frequenz?",
+                  "optionen": [
+                    "Sekunde",
+                    "Hertz",
+                    "Meter",
+                    "Watt"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Hertz = 1/s.",
+                  "id": "p3-schwingungen-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Periodendauer bei f=50 Hz?",
+                  "loesung": 0.02,
+                  "toleranz": 0.001,
+                  "einheit": "s",
+                  "erklaerung": "T=1/f=0,02.",
+                  "id": "p3-schwingungen-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Wellenlänge bei v=340 m/s, f=170 Hz?",
+                  "loesung": 2.0,
+                  "toleranz": 0.05,
+                  "einheit": "m",
+                  "erklaerung": "λ=v/f=2.",
+                  "id": "p3-schwingungen-3"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Frequenz bei T=0,004 s?",
+                  "loesung": 250.0,
+                  "toleranz": 1,
+                  "einheit": "Hz",
+                  "erklaerung": "f=1/T=250.",
+                  "id": "p3-schwingungen-4"
+                }
+              ]
+            },
+            "akustik": {
+              "name": "Akustik",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Schallgeschwindigkeit in Luft (ca.)?",
+                  "loesung": 340.0,
+                  "toleranz": 10,
+                  "einheit": "m/s",
+                  "erklaerung": "≈ 340 m/s bei 20 °C.",
+                  "id": "p3-akustik-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Lautstärke wird gemessen in",
+                  "optionen": [
+                    "Hertz",
+                    "Dezibel",
+                    "Newton",
+                    "Watt"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Dezibel (dB).",
+                  "id": "p3-akustik-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Entfernung eines Gewitters: Donner 3 s nach Blitz (v≈340 m/s)?",
+                  "loesung": 1020.0,
+                  "toleranz": 20,
+                  "einheit": "m",
+                  "erklaerung": "s=v·t≈1020 m.",
+                  "id": "p3-akustik-3"
+                }
               ]
             }
           }
@@ -212,17 +2011,174 @@
             "optik": {
               "name": "Optik",
               "fragen": [
-                {"id": "p4-opt-1", "typ": "num", "frage": "Lichtgeschwindigkeit im Vakuum (gerundet, in 10⁸ m/s)? Gib nur die Zahl vor 10⁸ an.", "loesung": 3, "toleranz": 0.05, "einheit": "·10⁸ m/s", "erklaerung": "c ≈ 3·10⁸ m/s."},
-                {"id": "p4-opt-2", "typ": "mc", "frage": "Das Reflexionsgesetz besagt", "optionen": ["Einfallswinkel > Ausfallswinkel", "Einfallswinkel = Ausfallswinkel", "Einfallswinkel < Ausfallswinkel", "Winkel sind unabhängig"], "loesung": 1, "erklaerung": "Einfallswinkel = Reflexionswinkel."},
-                {"id": "p4-opt-3", "typ": "mc", "frage": "Beim Übergang von Luft in Glas wird Licht", "optionen": ["vom Lot weg gebrochen", "zum Lot hin gebrochen", "gar nicht gebrochen", "vollständig absorbiert"], "loesung": 1, "erklaerung": "In das optisch dichtere Medium → Brechung zum Lot."}
+                {
+                  "typ": "mc",
+                  "frage": "Reflexionsgesetz:",
+                  "optionen": [
+                    "Einfallswinkel > Ausfallswinkel",
+                    "Einfallswinkel = Ausfallswinkel",
+                    "Einfallswinkel < Ausfallswinkel",
+                    "unabhängig"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Einfallswinkel = Reflexionswinkel.",
+                  "id": "p4-optik-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Übergang Luft → Glas: Licht wird",
+                  "optionen": [
+                    "vom Lot weg gebrochen",
+                    "zum Lot hin gebrochen",
+                    "nicht gebrochen",
+                    "absorbiert"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Zum Lot hin (dichteres Medium).",
+                  "id": "p4-optik-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Lichtgeschwindigkeit im Vakuum (·10⁸ m/s, nur Zahl)?",
+                  "loesung": 3.0,
+                  "toleranz": 0.05,
+                  "einheit": "·10⁸ m/s",
+                  "erklaerung": "c ≈ 3·10⁸ m/s.",
+                  "id": "p4-optik-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Eine Sammellinse ist in der Mitte",
+                  "optionen": [
+                    "dünner",
+                    "dicker",
+                    "flach",
+                    "verspiegelt"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "In der Mitte dicker (konvex).",
+                  "id": "p4-optik-4"
+                }
+              ]
+            },
+            "induktion": {
+              "name": "Elektromagnetische Induktion",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Induktion entsteht durch",
+                  "optionen": [
+                    "konstantes Magnetfeld",
+                    "Änderung des magnetischen Flusses",
+                    "konstanten Strom",
+                    "Reibung"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Flussänderung induziert Spannung.",
+                  "id": "p4-induktion-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Das Prinzip nutzt ein",
+                  "optionen": [
+                    "Widerstand",
+                    "Generator",
+                    "Kondensator (nur)",
+                    "Ohmmeter"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Generator wandelt Bewegung in Spannung.",
+                  "id": "p4-induktion-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Lenz'sche Regel betrifft die",
+                  "optionen": [
+                    "Richtung des Induktionsstroms",
+                    "Größe der Masse",
+                    "Lichtgeschwindigkeit",
+                    "Temperatur"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Induktionsstrom wirkt seiner Ursache entgegen.",
+                  "id": "p4-induktion-3"
+                }
+              ]
+            },
+            "wechselstrom": {
+              "name": "Wechselstrom",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Netzfrequenz in Europa?",
+                  "loesung": 50.0,
+                  "toleranz": 1,
+                  "einheit": "Hz",
+                  "erklaerung": "50 Hz.",
+                  "id": "p4-wechselstrom-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Bei Wechselstrom ändert sich periodisch die",
+                  "optionen": [
+                    "Masse",
+                    "Stromrichtung",
+                    "Temperatur",
+                    "Länge"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Stromrichtung wechselt periodisch.",
+                  "id": "p4-wechselstrom-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Effektivwert: Scheitelspannung 325 V → U_eff = Û/√2 (gerundet)?",
+                  "loesung": 229.809704,
+                  "toleranz": 2,
+                  "einheit": "V",
+                  "erklaerung": "≈ 230 V.",
+                  "id": "p4-wechselstrom-3"
+                }
               ]
             },
             "thermodynamik": {
               "name": "Thermodynamik",
               "fragen": [
-                {"id": "p4-therm-1", "typ": "mc", "frage": "Der 1. Hauptsatz der Thermodynamik ist ein Satz über die Erhaltung der", "optionen": ["Masse", "Energie", "Ladung", "Temperatur"], "loesung": 1, "erklaerung": "Energieerhaltung: ΔU = Q + W."},
-                {"id": "p4-therm-2", "typ": "mc", "frage": "Die allgemeine Gasgleichung lautet", "optionen": ["p·V = n·R·T", "p·V = m·g·h", "p = R/T", "V = p·T"], "loesung": 0, "erklaerung": "Ideales Gasgesetz: pV = nRT."},
-                {"id": "p4-therm-3", "typ": "mc", "frage": "Ein Wirkungsgrad kann höchstens", "optionen": ["größer als 1 sein", "gleich 1 (100 %) sein", "negativ sein", "unendlich sein"], "loesung": 1, "erklaerung": "η ≤ 1; reale Maschinen immer < 1."}
+                {
+                  "typ": "mc",
+                  "frage": "1. Hauptsatz: Erhaltung der",
+                  "optionen": [
+                    "Masse",
+                    "Energie",
+                    "Ladung",
+                    "Temperatur"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Energieerhaltung.",
+                  "id": "p4-thermodynamik-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Der Wirkungsgrad kann höchstens",
+                  "optionen": [
+                    "> 1 sein",
+                    "= 1 (100 %) sein",
+                    "negativ sein",
+                    "unendlich sein"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "η ≤ 1.",
+                  "id": "p4-thermodynamik-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Wirkungsgrad: 300 J Nutzen aus 1200 J (in %)?",
+                  "loesung": 25.0,
+                  "toleranz": 0.5,
+                  "einheit": "%",
+                  "erklaerung": "η=W_nutz/W_zu=25 %.",
+                  "id": "p4-thermodynamik-3"
+                }
               ]
             }
           }
@@ -230,13 +2186,181 @@
         "5": {
           "name": "HTL 5. Klasse",
           "themen": {
-            "atom-kernphysik": {
-              "name": "Atom- & Kernphysik",
+            "atomphysik": {
+              "name": "Atomphysik",
               "fragen": [
-                {"id": "p5-atom-1", "typ": "mc", "frage": "Der Atomkern besteht aus", "optionen": ["Protonen und Elektronen", "Protonen und Neutronen", "nur Neutronen", "Elektronen und Neutronen"], "loesung": 1, "erklaerung": "Nukleonen = Protonen + Neutronen."},
-                {"id": "p5-atom-2", "typ": "mc", "frage": "Einsteins Masse-Energie-Beziehung lautet", "optionen": ["E = m·c", "E = m·c²", "E = ½m·c²", "E = m/c²"], "loesung": 1, "erklaerung": "E = m·c²."},
-                {"id": "p5-atom-3", "typ": "num", "frage": "Nach wie vielen Halbwertszeiten ist nur noch 1/8 eines Stoffes vorhanden?", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "(1/2)³ = 1/8, also 3 Halbwertszeiten."},
-                {"id": "p5-atom-4", "typ": "mc", "frage": "Welche Strahlung hat die geringste Reichweite / höchste Ionisierung?", "optionen": ["Alpha-Strahlung", "Beta-Strahlung", "Gamma-Strahlung", "Röntgenstrahlung"], "loesung": 0, "erklaerung": "Alpha-Teilchen: kurze Reichweite, stark ionisierend."}
+                {
+                  "typ": "mc",
+                  "frage": "Der Atomkern besteht aus",
+                  "optionen": [
+                    "Protonen und Elektronen",
+                    "Protonen und Neutronen",
+                    "nur Neutronen",
+                    "Elektronen und Neutronen"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Nukleonen = Protonen + Neutronen.",
+                  "id": "p5-atomphysik-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Elektronen befinden sich",
+                  "optionen": [
+                    "im Kern",
+                    "in der Hülle",
+                    "zwischen Kernen",
+                    "im Vakuum nur"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "In der Atomhülle.",
+                  "id": "p5-atomphysik-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Ladung eines Protons ist",
+                  "optionen": [
+                    "negativ",
+                    "positiv",
+                    "neutral",
+                    "variabel"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Positiv.",
+                  "id": "p5-atomphysik-3"
+                }
+              ]
+            },
+            "kernphysik": {
+              "name": "Kernphysik",
+              "fragen": [
+                {
+                  "typ": "num",
+                  "frage": "Nach wie vielen Halbwertszeiten ist 1/8 übrig?",
+                  "loesung": 3.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "(½)³=1/8 → 3.",
+                  "id": "p5-kernphysik-1"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Nach wie vielen Halbwertszeiten ist 1/4 übrig?",
+                  "loesung": 2.0,
+                  "toleranz": 0.001,
+                  "einheit": "",
+                  "erklaerung": "(½)²=1/4 → 2.",
+                  "id": "p5-kernphysik-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Geringste Reichweite / stärkste Ionisation hat",
+                  "optionen": [
+                    "Alpha",
+                    "Beta",
+                    "Gamma",
+                    "Röntgen"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Alpha-Strahlung.",
+                  "id": "p5-kernphysik-3"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Gamma-Strahlung ist",
+                  "optionen": [
+                    "ein Heliumkern",
+                    "ein Elektron",
+                    "elektromagnetische Strahlung",
+                    "ein Proton"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "Energiereiche EM-Strahlung.",
+                  "id": "p5-kernphysik-4"
+                }
+              ]
+            },
+            "relativitaet": {
+              "name": "Relativität",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Einsteins Masse-Energie-Beziehung?",
+                  "optionen": [
+                    "E=m·c",
+                    "E=m·c²",
+                    "E=½mc²",
+                    "E=m/c²"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "E=m·c².",
+                  "id": "p5-relativitaet-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Nichts kann schneller sein als",
+                  "optionen": [
+                    "der Schall",
+                    "das Licht",
+                    "ein Flugzeug",
+                    "ein Satellit"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Lichtgeschwindigkeit als Grenze.",
+                  "id": "p5-relativitaet-2"
+                },
+                {
+                  "typ": "num",
+                  "frage": "Lichtgeschwindigkeit (·10⁸ m/s, nur Zahl)?",
+                  "loesung": 3.0,
+                  "toleranz": 0.05,
+                  "einheit": "·10⁸ m/s",
+                  "erklaerung": "c≈3·10⁸ m/s.",
+                  "id": "p5-relativitaet-3"
+                }
+              ]
+            },
+            "moderne-physik": {
+              "name": "Moderne Physik",
+              "fragen": [
+                {
+                  "typ": "mc",
+                  "frage": "Licht zeigt Eigenschaften von",
+                  "optionen": [
+                    "nur Wellen",
+                    "nur Teilchen",
+                    "Wellen und Teilchen",
+                    "nichts davon"
+                  ],
+                  "loesung": 2,
+                  "erklaerung": "Welle-Teilchen-Dualismus.",
+                  "id": "p5-moderne-physik-1"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Das Photon ist ein",
+                  "optionen": [
+                    "Lichtquant",
+                    "Atomkern",
+                    "Elektron",
+                    "Neutron"
+                  ],
+                  "loesung": 0,
+                  "erklaerung": "Energiequant des Lichts.",
+                  "id": "p5-moderne-physik-2"
+                },
+                {
+                  "typ": "mc",
+                  "frage": "Die Quantenphysik beschreibt",
+                  "optionen": [
+                    "sehr große Objekte",
+                    "sehr kleine Objekte (Atome)",
+                    "nur Planeten",
+                    "nur Schall"
+                  ],
+                  "loesung": 1,
+                  "erklaerung": "Mikrokosmos (Atome, Teilchen).",
+                  "id": "p5-moderne-physik-3"
+                }
               ]
             }
           }

@@ -85,6 +85,26 @@ button {
 .detail.no .mark { color: var(--rot); }
 .detail .meta { font-size: .88rem; color: var(--grau); margin-top: 3px; }
 .versteckt { display: none; }
+.modus-wahl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 620px) { .modus-wahl { grid-template-columns: 1fr; } }
+.modus-btn {
+  text-align: left; display: flex; flex-direction: column; gap: 3px;
+  background: #fff; border: 2px solid var(--rand); border-radius: 10px;
+  padding: 14px 16px; cursor: pointer; font-weight: 400;
+}
+.modus-btn:hover { border-color: var(--blau-hell); }
+.modus-btn.aktiv { border-color: var(--blau); background: #f4f8ff; }
+.modus-btn .modus-titel { font-weight: 700; color: var(--blau); font-size: 1.05rem; }
+.modus-btn .modus-sub { font-size: .82rem; color: var(--grau); }
+.timer-bar {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--blau); color: #fff; padding: 10px 16px;
+  border-radius: 10px; margin-bottom: 16px; font-weight: 600; font-size: .9rem;
+}
+.timer-zeit { font-size: 1.3rem; font-variant-numeric: tabular-nums; letter-spacing: .5px; }
+.timer-zeit.knapp { color: #ffd4d1; animation: puls 1s infinite; }
+@keyframes puls { 50% { opacity: .5; } }
 .msg { padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: .9rem; }
 .msg.ok { background: #e6f4ea; color: #137333; border: 1px solid #a8d5b5; }
 .msg.err { background: #fce8e6; color: #a50e0e; border: 1px solid #f3b8b4; }
