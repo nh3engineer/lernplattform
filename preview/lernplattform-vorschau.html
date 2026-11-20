@@ -1,0 +1,422 @@
+<title>Lernplattform Vorschau</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: schmale, mobil-zuerst gestaltete Spalte; Karten je Arbeitsschritt */
+  :root {
+    --bg: #eef2f8;
+    --flaeche: #ffffff;
+    --tinte: #16203a;
+    --gedaempft: #5b6678;
+    --blau: #1a3c6e;
+    --blau-hell: #2f6fb3;
+    --rand: #dbe3ee;
+    --gruen: #1e8e3e;
+    --rot: #c5221f;
+    --gelb-bg: #fff8e1;
+    --gelb-rand: #ffe082;
+    --gelb-tinte: #6b5300;
+    --font-text: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --font-kopf: "Space Grotesk", var(--font-text);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1522;
+      --flaeche: #18212f;
+      --tinte: #e7edf6;
+      --gedaempft: #9aa7ba;
+      --blau: #6fa8e0;
+      --blau-hell: #8fc0f0;
+      --rand: #2a3647;
+      --gruen: #51c877;
+      --rot: #f08b88;
+      --gelb-bg: #2c2410;
+      --gelb-rand: #5a4a16;
+      --gelb-tinte: #e6cf8a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1522;
+    --flaeche: #18212f;
+    --tinte: #e7edf6;
+    --gedaempft: #9aa7ba;
+    --blau: #6fa8e0;
+    --blau-hell: #8fc0f0;
+    --rand: #2a3647;
+    --gruen: #51c877;
+    --rot: #f08b88;
+    --gelb-bg: #2c2410;
+    --gelb-rand: #5a4a16;
+    --gelb-tinte: #e6cf8a;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--tinte);
+    font-family: var(--font-text);
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0 56px;
+  }
+  header.hero {
+    background: linear-gradient(135deg, #1a3c6e, #2f6fb3);
+    color: #fff;
+    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+    padding-top: calc(env(safe-area-inset-top, 0px) + 26px);
+    padding-bottom: 24px;
+  }
+  header.hero .inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  header.hero h1 {
+    font-family: var(--font-kopf);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  header.hero p { margin: 6px 0 0; opacity: .92; font-size: .9rem; }
+  .vorschau-badge {
+    display: inline-block; margin-top: 12px; font-size: .74rem;
+    letter-spacing: .06em; text-transform: uppercase;
+    background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+    color: #fff; padding: 4px 10px; border-radius: 999px;
+  }
+  .karte {
+    background: var(--flaeche);
+    border: 1px solid var(--rand);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 18px;
+    box-shadow: 0 1px 2px rgba(10,20,40,.04);
+  }
+  .karte h2 {
+    font-family: var(--font-kopf); font-weight: 600;
+    margin: 0 0 14px; font-size: 1.1rem; color: var(--blau);
+  }
+  .schritt { font-variant-numeric: tabular-nums; }
+  label { display: block; font-weight: 600; margin: 12px 0 5px; font-size: .9rem; }
+  select, input[type=text], input[type=email] {
+    width: 100%; padding: 11px 12px; border: 1px solid var(--rand);
+    border-radius: 9px; font-size: 1rem; background: var(--flaeche);
+    color: var(--tinte); font-family: inherit;
+  }
+  select:disabled { opacity: .55; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } }
+  button {
+    cursor: pointer; border: none; border-radius: 9px; font-size: 1rem;
+    font-weight: 600; padding: 12px 20px; font-family: inherit;
+  }
+  .btn-primary { background: var(--blau); color: #fff; }
+  .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+  .btn-ghost { background: transparent; color: var(--blau); border: 1px solid var(--rand); }
+  .frage {
+    border: 1px solid var(--rand); border-radius: 11px; padding: 16px;
+    margin-bottom: 14px;
+  }
+  .frage .nr {
+    font-family: var(--font-kopf); color: var(--blau-hell);
+    font-weight: 600; font-size: .85rem; letter-spacing: .03em;
+  }
+  .frage .text { font-weight: 600; margin: 5px 0 12px; }
+  .optionen label {
+    display: flex; align-items: center; gap: 10px; font-weight: 400;
+    padding: 10px 12px; border: 1px solid var(--rand); border-radius: 9px;
+    margin: 7px 0; cursor: pointer;
+  }
+  .optionen input { width: auto; accent-color: var(--blau); }
+  .num-wrap { display: flex; align-items: center; gap: 8px; }
+  .num-wrap input { min-width: 0; }
+  .num-wrap .einheit { color: var(--gedaempft); font-size: .9rem; white-space: nowrap; }
+  .hinweis {
+    background: var(--gelb-bg); border: 1px solid var(--gelb-rand);
+    color: var(--gelb-tinte); border-radius: 9px; padding: 11px 14px;
+    font-size: .85rem; margin-top: 14px;
+  }
+  .ergebnis-box { display: flex; gap: 12px; flex-wrap: wrap; margin: 4px 0 8px; }
+  .stat {
+    flex: 1; min-width: 120px; text-align: center; padding: 16px 10px;
+    border-radius: 11px; border: 1px solid var(--rand);
+  }
+  .stat .wert {
+    font-family: var(--font-kopf); font-size: 1.7rem; font-weight: 600;
+    color: var(--blau); font-variant-numeric: tabular-nums;
+  }
+  .stat .wert.klein { font-size: 1.05rem; }
+  .stat .label { font-size: .8rem; color: var(--gedaempft); margin-top: 2px; }
+  .detail { border-top: 1px solid var(--rand); padding: 13px 0; display: flex; gap: 12px; }
+  .detail:first-of-type { border-top: none; }
+  .detail .mark { font-size: 1.15rem; font-weight: 700; line-height: 1.4; }
+  .detail.ok .mark { color: var(--gruen); }
+  .detail.no .mark { color: var(--rot); }
+  .detail .meta { font-size: .85rem; color: var(--gedaempft); margin-top: 2px; }
+  .detail .meta b { color: var(--tinte); font-weight: 600; }
+  .msg { padding: 11px 14px; border-radius: 9px; margin-top: 12px; font-size: .88rem; }
+  .msg.ok { background: color-mix(in srgb, var(--gruen) 14%, transparent); color: var(--gruen); }
+  .msg.err { background: color-mix(in srgb, var(--rot) 14%, transparent); color: var(--rot); }
+  .fuss { text-align: center; color: var(--gedaempft); font-size: .8rem; margin-top: 26px; }
+  .zeilen-btns { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+</style>
+
+<header class="hero">
+  <div class="inner">
+    <h1>Lernplattform &ndash; Physik &amp; Mathematik</h1>
+    <p>Pr&uuml;fungen nach Fach und Schulstufe (HTL 1.&ndash;5. Klasse) &middot; automatische Auswertung</p>
+    <span class="vorschau-badge">Handy-Vorschau &middot; ohne E-Mail/PDF</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- Auswahl -->
+  <section id="bereich-auswahl" class="karte">
+    <h2><span class="schritt">1</span> &middot; Pr&uuml;fung zusammenstellen</h2>
+    <div class="grid2">
+      <div>
+        <label for="fach">Fach</label>
+        <select id="fach"></select>
+      </div>
+      <div>
+        <label for="stufe">Schulstufe</label>
+        <select id="stufe" disabled></select>
+      </div>
+    </div>
+    <label for="thema">Themengebiet</label>
+    <select id="thema" disabled></select>
+    <div class="zeilen-btns">
+      <button id="btn-start" class="btn-primary">Pr&uuml;fung starten</button>
+    </div>
+    <div id="auswahl-msg" class="msg" hidden></div>
+  </section>
+
+  <!-- Pruefung -->
+  <section id="bereich-pruefung" class="karte" hidden>
+    <h2 id="pruefung-titel">Pr&uuml;fung</h2>
+    <div id="fragen-container"></div>
+
+    <h2 style="margin-top:22px"><span class="schritt">2</span> &middot; Abgabe</h2>
+    <div class="grid2">
+      <div>
+        <label for="name">Name (optional)</label>
+        <input type="text" id="name" placeholder="Vor- und Nachname">
+      </div>
+      <div>
+        <label for="email">E-Mail-Adresse</label>
+        <input type="email" id="email" placeholder="name@beispiel.at">
+      </div>
+    </div>
+    <div class="hinweis">
+      In der echten Plattform wird das Auswertungs-PDF an diese Adresse geschickt,
+      mit einer automatischen Kopie an die Lehrperson. In dieser Handy-Vorschau
+      siehst du die Auswertung nur direkt am Bildschirm.
+    </div>
+    <div class="zeilen-btns">
+      <button id="btn-abgeben" class="btn-primary">Pr&uuml;fung auswerten</button>
+      <button id="btn-zurueck" class="btn-ghost">Abbrechen</button>
+    </div>
+    <div id="abgabe-msg" class="msg" hidden></div>
+  </section>
+
+  <!-- Ergebnis -->
+  <section id="bereich-ergebnis" class="karte" hidden>
+    <h2>Auswertung</h2>
+    <div class="ergebnis-box">
+      <div class="stat"><div class="wert" id="stat-punkte">&ndash;</div><div class="label">Punkte</div></div>
+      <div class="stat"><div class="wert" id="stat-prozent">&ndash;</div><div class="label">Prozent</div></div>
+      <div class="stat"><div class="wert klein" id="stat-note">&ndash;</div><div class="label">Note</div></div>
+    </div>
+    <h2 style="margin-top:20px">Detailauswertung</h2>
+    <div id="detail-container"></div>
+    <div class="zeilen-btns">
+      <button id="btn-neu" class="btn-primary">Neue Pr&uuml;fung</button>
+    </div>
+  </section>
+
+  <div class="fuss">Vorschau der Lernplattform &middot; die volle Version l&auml;uft als lokale Web-App mit PDF &amp; E-Mail</div>
+</div>
+
+<script>
+"use strict";
+
+const DATEN = {"faecher":{"mathematik":{"name":"Mathematik","stufen":{"1":{"name":"HTL 1. Klasse","themen":{"termumformungen":{"name":"Termumformungen & Grundrechenarten","fragen":[{"id":"m1-term-1","typ":"mc","frage":"Vereinfache: 3a + 5a - 2a","optionen":["6a","10a","a","8a"],"loesung":0,"erklaerung":"3 + 5 - 2 = 6, also 6a."},{"id":"m1-term-2","typ":"mc","frage":"Multipliziere aus: 2(x + 4)","optionen":["2x + 4","2x + 8","x + 8","2x + 6"],"loesung":1,"erklaerung":"2·x + 2·4 = 2x + 8."},{"id":"m1-term-3","typ":"num","frage":"Berechne den Wert des Terms 4x - 3 für x = 5.","loesung":17,"toleranz":0.001,"einheit":"","erklaerung":"4·5 - 3 = 20 - 3 = 17."},{"id":"m1-term-4","typ":"mc","frage":"Binomische Formel: (a + b)² =","optionen":["a² + b²","a² + ab + b²","a² + 2ab + b²","a² - 2ab + b²"],"loesung":2,"erklaerung":"Erste binomische Formel: a² + 2ab + b²."},{"id":"m1-term-5","typ":"num","frage":"Berechne: (-3)² + 2·(-4)","loesung":1,"toleranz":0.001,"einheit":"","erklaerung":"9 + (-8) = 1."}]},"lineare-gleichungen":{"name":"Lineare Gleichungen","fragen":[{"id":"m1-lin-1","typ":"num","frage":"Löse nach x: 2x + 6 = 14","loesung":4,"toleranz":0.001,"einheit":"","erklaerung":"2x = 8, x = 4."},{"id":"m1-lin-2","typ":"num","frage":"Löse nach x: 5x - 7 = 3x + 5","loesung":6,"toleranz":0.001,"einheit":"","erklaerung":"2x = 12, x = 6."},{"id":"m1-lin-3","typ":"mc","frage":"Welche Umformung ist bei Gleichungen erlaubt?","optionen":["Beide Seiten mit 0 multiplizieren","Auf beiden Seiten dieselbe Zahl addieren","Nur eine Seite verändern","Durch eine Variable dividieren, die 0 sein kann"],"loesung":1,"erklaerung":"Äquivalenzumformungen müssen auf beiden Seiten gleich erfolgen."},{"id":"m1-lin-4","typ":"num","frage":"Löse nach x: (x/3) = 4","loesung":12,"toleranz":0.001,"einheit":"","erklaerung":"x = 4·3 = 12."}]},"prozentrechnung":{"name":"Prozent- & Schlussrechnung","fragen":[{"id":"m1-proz-1","typ":"num","frage":"Wie viel sind 15 % von 240?","loesung":36,"toleranz":0.01,"einheit":"","erklaerung":"240·0,15 = 36."},{"id":"m1-proz-2","typ":"num","frage":"Ein Preis steigt von 80 € auf 100 €. Um wie viel Prozent?","loesung":25,"toleranz":0.1,"einheit":"%","erklaerung":"20/80 = 0,25 = 25 %."},{"id":"m1-proz-3","typ":"num","frage":"Von welcher Zahl sind 30 gleich 12 %?","loesung":250,"toleranz":0.1,"einheit":"","erklaerung":"30/0,12 = 250."}]}}},"2":{"name":"HTL 2. Klasse","themen":{"quadratische-gleichungen":{"name":"Quadratische Gleichungen","fragen":[{"id":"m2-quad-1","typ":"mc","frage":"Die Lösungsformel für ax² + bx + c = 0 lautet x =","optionen":["(-b ± √(b²-4ac)) / (2a)","(-b ± √(b²+4ac)) / (2a)","(b ± √(b²-4ac)) / a","(-b ± √(4ac-b²)) / (2a)"],"loesung":0,"erklaerung":"Große Lösungsformel (Mitternachtsformel)."},{"id":"m2-quad-2","typ":"num","frage":"Eine Lösung von x² - 5x + 6 = 0 ist x = 2. Wie lautet die zweite Lösung?","loesung":3,"toleranz":0.001,"einheit":"","erklaerung":"Nach Vieta: x1·x2 = 6, 2·x2 = 6, x2 = 3."},{"id":"m2-quad-3","typ":"num","frage":"Berechne die Diskriminante von x² - 4x + 4 = 0.","loesung":0,"toleranz":0.001,"einheit":"","erklaerung":"D = b²-4ac = 16 - 16 = 0 (Doppellösung)."},{"id":"m2-quad-4","typ":"mc","frage":"Was bedeutet eine negative Diskriminante (D < 0)?","optionen":["Zwei reelle Lösungen","Eine reelle Lösung","Keine reelle Lösung","Unendlich viele Lösungen"],"loesung":2,"erklaerung":"Bei D < 0 gibt es keine reellen, sondern konjugiert komplexe Lösungen."}]},"trigonometrie":{"name":"Trigonometrie im rechtwinkligen Dreieck","fragen":[{"id":"m2-trig-1","typ":"mc","frage":"Im rechtwinkligen Dreieck gilt sin(α) =","optionen":["Ankathete / Hypotenuse","Gegenkathete / Hypotenuse","Gegenkathete / Ankathete","Hypotenuse / Gegenkathete"],"loesung":1,"erklaerung":"Sinus = Gegenkathete / Hypotenuse."},{"id":"m2-trig-2","typ":"num","frage":"Berechne sin(30°). (Dezimalwert)","loesung":0.5,"toleranz":0.01,"einheit":"","erklaerung":"sin(30°) = 0,5."},{"id":"m2-trig-3","typ":"num","frage":"Ein rechtwinkliges Dreieck hat Katheten 3 und 4. Wie lang ist die Hypotenuse?","loesung":5,"toleranz":0.01,"einheit":"","erklaerung":"√(3²+4²) = √25 = 5 (Satz des Pythagoras)."},{"id":"m2-trig-4","typ":"mc","frage":"tan(α) ist definiert als","optionen":["sin(α)·cos(α)","sin(α) / cos(α)","cos(α) / sin(α)","1 / sin(α)"],"loesung":1,"erklaerung":"tan = sin/cos = Gegenkathete/Ankathete."}]},"funktionen":{"name":"Lineare & quadratische Funktionen","fragen":[{"id":"m2-fkt-1","typ":"mc","frage":"Die Steigung der Geraden y = 3x + 2 beträgt","optionen":["2","3","3x","5"],"loesung":1,"erklaerung":"k = 3 (Koeffizient von x)."},{"id":"m2-fkt-2","typ":"num","frage":"Wo schneidet y = 2x - 6 die x-Achse? (x-Wert)","loesung":3,"toleranz":0.001,"einheit":"","erklaerung":"2x - 6 = 0, x = 3."},{"id":"m2-fkt-3","typ":"mc","frage":"Der Graph von y = x² ist eine","optionen":["Gerade","Parabel","Hyperbel","Kreis"],"loesung":1,"erklaerung":"Quadratische Funktion → nach oben geöffnete Parabel."}]}}},"3":{"name":"HTL 3. Klasse","themen":{"differentialrechnung":{"name":"Differentialrechnung","fragen":[{"id":"m3-diff-1","typ":"mc","frage":"Die Ableitung von f(x) = x³ ist","optionen":["3x²","x²","3x","x⁴/4"],"loesung":0,"erklaerung":"Potenzregel: f'(x) = 3x²."},{"id":"m3-diff-2","typ":"num","frage":"Berechne f'(2) für f(x) = x².","loesung":4,"toleranz":0.001,"einheit":"","erklaerung":"f'(x) = 2x, f'(2) = 4."},{"id":"m3-diff-3","typ":"mc","frage":"Die Ableitung von f(x) = sin(x) ist","optionen":["-sin(x)","cos(x)","-cos(x)","tan(x)"],"loesung":1,"erklaerung":"f'(x) = cos(x)."},{"id":"m3-diff-4","typ":"mc","frage":"An einem lokalen Extremum einer differenzierbaren Funktion gilt","optionen":["f(x) = 0","f'(x) = 0","f''(x) = 0","f'(x) = 1"],"loesung":1,"erklaerung":"Notwendige Bedingung: erste Ableitung null."},{"id":"m3-diff-5","typ":"num","frage":"Für f(x) = 3x² + 2x: berechne f'(1).","loesung":8,"toleranz":0.001,"einheit":"","erklaerung":"f'(x) = 6x + 2, f'(1) = 8."}]},"exp-log":{"name":"Exponential- & Logarithmusfunktionen","fragen":[{"id":"m3-exp-1","typ":"num","frage":"Berechne log₁₀(1000).","loesung":3,"toleranz":0.001,"einheit":"","erklaerung":"10³ = 1000, also log = 3."},{"id":"m3-exp-2","typ":"mc","frage":"Die Ableitung von f(x) = eˣ ist","optionen":["x·eˣ⁻¹","eˣ","1/x","ln(x)"],"loesung":1,"erklaerung":"e-Funktion ist ihre eigene Ableitung."},{"id":"m3-exp-3","typ":"num","frage":"Berechne ln(1).","loesung":0,"toleranz":0.001,"einheit":"","erklaerung":"e⁰ = 1, also ln(1) = 0."},{"id":"m3-exp-4","typ":"mc","frage":"Welches Gesetz gilt? log(a·b) =","optionen":["log(a)·log(b)","log(a) + log(b)","log(a) - log(b)","log(a)/log(b)"],"loesung":1,"erklaerung":"Logarithmus eines Produkts = Summe der Logarithmen."}]}}},"4":{"name":"HTL 4. Klasse","themen":{"integralrechnung":{"name":"Integralrechnung","fragen":[{"id":"m4-int-1","typ":"mc","frage":"Die Stammfunktion von f(x) = 2x ist","optionen":["2","x² + C","2x² + C","x + C"],"loesung":1,"erklaerung":"∫2x dx = x² + C."},{"id":"m4-int-2","typ":"num","frage":"Berechne das bestimmte Integral ∫₀² 2x dx.","loesung":4,"toleranz":0.001,"einheit":"","erklaerung":"[x²]₀² = 4 - 0 = 4."},{"id":"m4-int-3","typ":"mc","frage":"∫ eˣ dx =","optionen":["eˣ + C","x·eˣ + C","eˣ⁺¹ + C","ln(x) + C"],"loesung":0,"erklaerung":"Stammfunktion von eˣ ist eˣ + C."},{"id":"m4-int-4","typ":"num","frage":"Berechne ∫₁³ 1 dx.","loesung":2,"toleranz":0.001,"einheit":"","erklaerung":"[x]₁³ = 3 - 1 = 2."}]},"komplexe-zahlen":{"name":"Komplexe Zahlen","fragen":[{"id":"m4-kplx-1","typ":"mc","frage":"Die imaginäre Einheit i erfüllt","optionen":["i² = 1","i² = -1","i = -1","i² = 0"],"loesung":1,"erklaerung":"Definition: i² = -1."},{"id":"m4-kplx-2","typ":"mc","frage":"Der Betrag von z = 3 + 4i ist","optionen":["7","5","12","25"],"loesung":1,"erklaerung":"|z| = √(3²+4²) = 5."},{"id":"m4-kplx-3","typ":"mc","frage":"Die konjugiert komplexe Zahl zu z = 2 - 5i ist","optionen":["-2 + 5i","2 + 5i","-2 - 5i","5 - 2i"],"loesung":1,"erklaerung":"Vorzeichen des Imaginärteils umkehren: 2 + 5i."}]}}},"5":{"name":"HTL 5. Klasse","themen":{"wahrscheinlichkeit":{"name":"Wahrscheinlichkeit & Statistik","fragen":[{"id":"m5-wsk-1","typ":"num","frage":"Wie groß ist die Wahrscheinlichkeit, mit einem fairen Würfel eine 6 zu werfen? (Dezimal, gerundet auf 3 Stellen)","loesung":0.167,"toleranz":0.002,"einheit":"","erklaerung":"1/6 ≈ 0,167."},{"id":"m5-wsk-2","typ":"num","frage":"Berechne den Mittelwert von 4, 8, 10, 6, 2.","loesung":6,"toleranz":0.01,"einheit":"","erklaerung":"(4+8+10+6+2)/5 = 30/5 = 6."},{"id":"m5-wsk-3","typ":"mc","frage":"Die Summe aller Wahrscheinlichkeiten eines Zufallsexperiments ist","optionen":["0","0,5","1","100"],"loesung":2,"erklaerung":"Normierung: Gesamtwahrscheinlichkeit = 1."},{"id":"m5-wsk-4","typ":"num","frage":"Zwei faire Münzen: Wahrscheinlichkeit für zweimal Kopf? (Dezimal)","loesung":0.25,"toleranz":0.001,"einheit":"","erklaerung":"0,5·0,5 = 0,25."}]},"differentialgleichungen":{"name":"Differentialgleichungen (Einführung)","fragen":[{"id":"m5-dgl-1","typ":"mc","frage":"Die Lösung von y' = y ist","optionen":["y = x²","y = C·eˣ","y = sin(x)","y = ln(x)"],"loesung":1,"erklaerung":"Exponentielles Wachstum: y = C·eˣ."},{"id":"m5-dgl-2","typ":"mc","frage":"Eine Differentialgleichung 1. Ordnung enthält höchstens","optionen":["die Funktion selbst","die erste Ableitung","die zweite Ableitung","die dritte Ableitung"],"loesung":1,"erklaerung":"Ordnung = höchste vorkommende Ableitung, hier y'."}]}}}}},"physik":{"name":"Physik","stufen":{"1":{"name":"HTL 1. Klasse","themen":{"kinematik":{"name":"Kinematik (gleichförmige Bewegung)","fragen":[{"id":"p1-kin-1","typ":"mc","frage":"Die Einheit der Geschwindigkeit im SI-System ist","optionen":["km/h","m/s","m/s²","N"],"loesung":1,"erklaerung":"SI-Einheit: Meter pro Sekunde."},{"id":"p1-kin-2","typ":"num","frage":"Ein Auto fährt 150 km in 2 h. Wie groß ist die Durchschnittsgeschwindigkeit in km/h?","loesung":75,"toleranz":0.1,"einheit":"km/h","erklaerung":"v = s/t = 150/2 = 75 km/h."},{"id":"p1-kin-3","typ":"num","frage":"Wandle 72 km/h in m/s um.","loesung":20,"toleranz":0.1,"einheit":"m/s","erklaerung":"72 / 3,6 = 20 m/s."},{"id":"p1-kin-4","typ":"num","frage":"Mit 10 m/s: welche Strecke in 5 s? (gleichförmig)","loesung":50,"toleranz":0.1,"einheit":"m","erklaerung":"s = v·t = 10·5 = 50 m."}]},"kraefte":{"name":"Kräfte & Dichte","fragen":[{"id":"p1-kraft-1","typ":"mc","frage":"Die Einheit der Kraft ist","optionen":["Joule (J)","Newton (N)","Watt (W)","Pascal (Pa)"],"loesung":1,"erklaerung":"Kraft wird in Newton gemessen."},{"id":"p1-kraft-2","typ":"num","frage":"Welche Gewichtskraft wirkt auf 5 kg? (g = 9,81 m/s², in N)","loesung":49.05,"toleranz":0.5,"einheit":"N","erklaerung":"F = m·g = 5·9,81 = 49,05 N."},{"id":"p1-kraft-3","typ":"num","frage":"Dichte von 200 g auf 250 cm³? (in g/cm³)","loesung":0.8,"toleranz":0.01,"einheit":"g/cm³","erklaerung":"ρ = m/V = 200/250 = 0,8 g/cm³."},{"id":"p1-kraft-4","typ":"mc","frage":"Das newtonsche Grundgesetz lautet","optionen":["F = m/a","F = m·a","F = a/m","F = m·v"],"loesung":1,"erklaerung":"Kraft = Masse · Beschleunigung."}]}}},"2":{"name":"HTL 2. Klasse","themen":{"energie":{"name":"Arbeit, Energie & Leistung","fragen":[{"id":"p2-en-1","typ":"mc","frage":"Die Einheit der Energie ist","optionen":["Newton (N)","Joule (J)","Watt (W)","Volt (V)"],"loesung":1,"erklaerung":"Energie und Arbeit werden in Joule gemessen."},{"id":"p2-en-2","typ":"num","frage":"Hubarbeit, um 10 kg um 2 m zu heben? (g = 9,81 m/s², in J)","loesung":196.2,"toleranz":1,"einheit":"J","erklaerung":"W = m·g·h = 10·9,81·2 = 196,2 J."},{"id":"p2-en-3","typ":"num","frage":"Kinetische Energie von 2 kg bei 3 m/s? (in J)","loesung":9,"toleranz":0.1,"einheit":"J","erklaerung":"E = ½mv² = 0,5·2·9 = 9 J."},{"id":"p2-en-4","typ":"num","frage":"Leistung, wenn 600 J in 3 s verrichtet werden? (in W)","loesung":200,"toleranz":0.5,"einheit":"W","erklaerung":"P = W/t = 600/3 = 200 W."}]},"waermelehre":{"name":"Wärmelehre","fragen":[{"id":"p2-waerme-1","typ":"num","frage":"0 °C entsprechen wie viel Kelvin?","loesung":273.15,"toleranz":0.5,"einheit":"K","erklaerung":"T(K) = T(°C) + 273,15."},{"id":"p2-waerme-2","typ":"mc","frage":"Die Wärmemenge berechnet sich mit","optionen":["Q = m·c·ΔT","Q = m·g·h","Q = ½mv²","Q = U·I"],"loesung":0,"erklaerung":"Q = Masse · spezifische Wärmekapazität · Temperaturdifferenz."},{"id":"p2-waerme-3","typ":"mc","frage":"Bei welchem Vorgang geht ein Stoff von fest zu flüssig über?","optionen":["Verdampfen","Schmelzen","Sublimieren","Kondensieren"],"loesung":1,"erklaerung":"Fest → flüssig heißt Schmelzen."}]}}},"3":{"name":"HTL 3. Klasse","themen":{"elektrizitaet":{"name":"Elektrizitätslehre (Gleichstrom)","fragen":[{"id":"p3-el-1","typ":"mc","frage":"Das ohmsche Gesetz lautet","optionen":["U = R/I","U = R·I","U = I/R","U = P·I"],"loesung":1,"erklaerung":"Spannung = Widerstand · Strom."},{"id":"p3-el-2","typ":"num","frage":"Welcher Strom fließt bei U = 12 V und R = 4 Ω? (in A)","loesung":3,"toleranz":0.01,"einheit":"A","erklaerung":"I = U/R = 12/4 = 3 A."},{"id":"p3-el-3","typ":"num","frage":"Elektrische Leistung bei U = 230 V und I = 2 A? (in W)","loesung":460,"toleranz":1,"einheit":"W","erklaerung":"P = U·I = 230·2 = 460 W."},{"id":"p3-el-4","typ":"num","frage":"Zwei Widerstände 3 Ω und 6 Ω in Serie. Gesamtwiderstand? (in Ω)","loesung":9,"toleranz":0.1,"einheit":"Ω","erklaerung":"Serie: R = R1 + R2 = 9 Ω."},{"id":"p3-el-5","typ":"mc","frage":"Die Einheit der elektrischen Ladung ist","optionen":["Ampere (A)","Coulomb (C)","Volt (V)","Ohm (Ω)"],"loesung":1,"erklaerung":"Ladung Q wird in Coulomb gemessen."}]},"schwingungen":{"name":"Schwingungen & Wellen","fragen":[{"id":"p3-schw-1","typ":"mc","frage":"Die Frequenz hat die Einheit","optionen":["Sekunde (s)","Hertz (Hz)","Meter (m)","Watt (W)"],"loesung":1,"erklaerung":"f in Hertz = 1/s."},{"id":"p3-schw-2","typ":"num","frage":"Periodendauer bei f = 50 Hz? (in s)","loesung":0.02,"toleranz":0.001,"einheit":"s","erklaerung":"T = 1/f = 1/50 = 0,02 s."},{"id":"p3-schw-3","typ":"num","frage":"Wellenlänge bei v = 340 m/s und f = 170 Hz? (in m)","loesung":2,"toleranz":0.05,"einheit":"m","erklaerung":"λ = v/f = 340/170 = 2 m."}]}}},"4":{"name":"HTL 4. Klasse","themen":{"optik":{"name":"Optik","fragen":[{"id":"p4-opt-1","typ":"num","frage":"Lichtgeschwindigkeit im Vakuum (gerundet, in 10⁸ m/s)? Gib nur die Zahl vor 10⁸ an.","loesung":3,"toleranz":0.05,"einheit":"·10⁸ m/s","erklaerung":"c ≈ 3·10⁸ m/s."},{"id":"p4-opt-2","typ":"mc","frage":"Das Reflexionsgesetz besagt","optionen":["Einfallswinkel > Ausfallswinkel","Einfallswinkel = Ausfallswinkel","Einfallswinkel < Ausfallswinkel","Winkel sind unabhängig"],"loesung":1,"erklaerung":"Einfallswinkel = Reflexionswinkel."},{"id":"p4-opt-3","typ":"mc","frage":"Beim Übergang von Luft in Glas wird Licht","optionen":["vom Lot weg gebrochen","zum Lot hin gebrochen","gar nicht gebrochen","vollständig absorbiert"],"loesung":1,"erklaerung":"In das optisch dichtere Medium → Brechung zum Lot."}]},"thermodynamik":{"name":"Thermodynamik","fragen":[{"id":"p4-therm-1","typ":"mc","frage":"Der 1. Hauptsatz der Thermodynamik ist ein Satz über die Erhaltung der","optionen":["Masse","Energie","Ladung","Temperatur"],"loesung":1,"erklaerung":"Energieerhaltung: ΔU = Q + W."},{"id":"p4-therm-2","typ":"mc","frage":"Die allgemeine Gasgleichung lautet","optionen":["p·V = n·R·T","p·V = m·g·h","p = R/T","V = p·T"],"loesung":0,"erklaerung":"Ideales Gasgesetz: pV = nRT."},{"id":"p4-therm-3","typ":"mc","frage":"Ein Wirkungsgrad kann höchstens","optionen":["größer als 1 sein","gleich 1 (100 %) sein","negativ sein","unendlich sein"],"loesung":1,"erklaerung":"η ≤ 1; reale Maschinen immer < 1."}]}}},"5":{"name":"HTL 5. Klasse","themen":{"atom-kernphysik":{"name":"Atom- & Kernphysik","fragen":[{"id":"p5-atom-1","typ":"mc","frage":"Der Atomkern besteht aus","optionen":["Protonen und Elektronen","Protonen und Neutronen","nur Neutronen","Elektronen und Neutronen"],"loesung":1,"erklaerung":"Nukleonen = Protonen + Neutronen."},{"id":"p5-atom-2","typ":"mc","frage":"Einsteins Masse-Energie-Beziehung lautet","optionen":["E = m·c","E = m·c²","E = ½m·c²","E = m/c²"],"loesung":1,"erklaerung":"E = m·c²."},{"id":"p5-atom-3","typ":"num","frage":"Nach wie vielen Halbwertszeiten ist nur noch 1/8 eines Stoffes vorhanden?","loesung":3,"toleranz":0.001,"einheit":"","erklaerung":"(1/2)³ = 1/8, also 3 Halbwertszeiten."},{"id":"p5-atom-4","typ":"mc","frage":"Welche Strahlung hat die geringste Reichweite / höchste Ionisierung?","optionen":["Alpha-Strahlung","Beta-Strahlung","Gamma-Strahlung","Röntgenstrahlung"],"loesung":0,"erklaerung":"Alpha-Teilchen: kurze Reichweite, stark ionisierend."}]}}}}}}};
+
+const $ = (id) => document.getElementById(id);
+let BAUM = [];
+let AKTUELL = null;
+
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function note(prozent){
+  if(prozent>=89) return "1 (Sehr gut)";
+  if(prozent>=76) return "2 (Gut)";
+  if(prozent>=63) return "3 (Befriedigend)";
+  if(prozent>=50) return "4 (Genügend)";
+  return "5 (Nicht genügend)";
+}
+
+function baueBaum(){
+  const out=[];
+  for(const [fk,fach] of Object.entries(DATEN.faecher)){
+    const stufen=[];
+    for(const sk of Object.keys(fach.stufen).sort()){
+      const stufe=fach.stufen[sk];
+      const themen=[];
+      for(const [tk,thema] of Object.entries(stufe.themen)){
+        themen.push({key:tk,name:thema.name,anzahl:thema.fragen.length});
+      }
+      stufen.push({key:sk,name:stufe.name,themen});
+    }
+    out.push({key:fk,name:fach.name,stufen});
+  }
+  return out;
+}
+
+function init(){
+  BAUM=baueBaum();
+  const sel=$("fach");
+  sel.innerHTML='<option value="">-- wählen --</option>';
+  BAUM.forEach(f=>{const o=document.createElement("option");o.value=f.key;o.textContent=f.name;sel.appendChild(o);});
+}
+
+function fuelleStufen(){
+  const fach=BAUM.find(f=>f.key===$("fach").value);
+  const s=$("stufe"), t=$("thema");
+  s.innerHTML='<option value="">-- wählen --</option>';
+  t.innerHTML='<option value="">-- zuerst Stufe wählen --</option>';
+  t.disabled=true; s.disabled=!fach;
+  if(!fach) return;
+  fach.stufen.forEach(st=>{const o=document.createElement("option");o.value=st.key;o.textContent=st.name;s.appendChild(o);});
+}
+
+function fuelleThemen(){
+  const fach=BAUM.find(f=>f.key===$("fach").value);
+  const stufe=fach?fach.stufen.find(s=>s.key===$("stufe").value):null;
+  const t=$("thema");
+  t.innerHTML='<option value="">-- wählen --</option>';
+  t.disabled=!stufe;
+  if(!stufe) return;
+  stufe.themen.forEach(th=>{const o=document.createElement("option");o.value=th.key;o.textContent=`${th.name} (${th.anzahl} Fragen)`;t.appendChild(o);});
+}
+
+function holeThema(fk,sk,tk){
+  const fach=DATEN.faecher[fk]; if(!fach) return null;
+  const stufe=fach.stufen[sk]; if(!stufe) return null;
+  const thema=stufe.themen[tk]; if(!thema) return null;
+  return {fach_name:fach.name,stufe_name:stufe.name,thema_name:thema.name,fragen:thema.fragen};
+}
+
+function melden(id,text,typ){
+  const el=$(id);
+  el.textContent=text||"";
+  el.className="msg "+(typ||"");
+  el.hidden=!text;
+}
+
+function starten(){
+  const fk=$("fach").value, sk=$("stufe").value, tk=$("thema").value;
+  if(!fk||!sk||!tk){melden("auswahl-msg","Bitte Fach, Schulstufe und Themengebiet wählen.","err");return;}
+  const thema=holeThema(fk,sk,tk);
+  const fragen=shuffle(thema.fragen.slice()).map(q=>{
+    const pub={id:q.id,typ:q.typ,frage:q.frage};
+    if(q.typ==="mc"){
+      pub.optionen=shuffle(q.optionen.map((t,i)=>({idx:i,text:t})));
+    } else {
+      pub.einheit=q.einheit||"";
+    }
+    return pub;
+  });
+  AKTUELL={fk,sk,tk,fragen};
+  $("pruefung-titel").textContent=`${thema.fach_name} · ${thema.stufe_name} · ${thema.thema_name}`;
+  const c=$("fragen-container"); c.innerHTML="";
+  fragen.forEach((q,i)=>{
+    const div=document.createElement("div"); div.className="frage";
+    let inner=`<div class="nr">Frage ${i+1}</div><div class="text">${esc(q.frage)}</div>`;
+    if(q.typ==="mc"){
+      inner+='<div class="optionen">';
+      q.optionen.forEach(opt=>{inner+=`<label><input type="radio" name="${q.id}" value="${opt.idx}"> ${esc(opt.text)}</label>`;});
+      inner+="</div>";
+    } else {
+      const e=q.einheit?`<span class="einheit">${esc(q.einheit)}</span>`:"";
+      inner+=`<div class="num-wrap"><input type="text" inputmode="decimal" name="${q.id}" placeholder="Antwort">${e}</div>`;
+    }
+    div.innerHTML=inner; c.appendChild(div);
+  });
+  melden("auswahl-msg","",""); melden("abgabe-msg","","");
+  $("bereich-auswahl").hidden=true; $("bereich-pruefung").hidden=false; $("bereich-ergebnis").hidden=true;
+  window.scrollTo(0,0);
+}
+
+function auswerten(){
+  const thema=holeThema(AKTUELL.fk,AKTUELL.sk,AKTUELL.tk);
+  const byId={}; thema.fragen.forEach(q=>byId[q.id]=q);
+  let punkte=0; const details=[];
+  AKTUELL.fragen.forEach(pq=>{
+    const q=byId[pq.id];
+    let richtig=false, deine="(keine Antwort)", loesung;
+    if(q.typ==="mc"){
+      const sel=document.querySelector(`input[name="${q.id}"]:checked`);
+      loesung=q.optionen[q.loesung];
+      if(sel){deine=q.optionen[parseInt(sel.value,10)]; richtig=parseInt(sel.value,10)===q.loesung;}
+    } else {
+      loesung=`${q.loesung} ${q.einheit||""}`.trim();
+      const inp=document.querySelector(`input[name="${q.id}"]`);
+      const roh=inp?inp.value.trim():"";
+      if(roh){deine=roh; const w=parseFloat(roh.replace(",",".")); if(!isNaN(w)) richtig=Math.abs(w-q.loesung)<=(q.toleranz||0.001);}
+    }
+    if(richtig) punkte++;
+    details.push({frage:q.frage,richtig,deine,loesung,erklaerung:q.erklaerung||""});
+  });
+  const max=details.length;
+  const prozent=max?(punkte/max*100):0;
+  return {punkte,max,prozent,note:note(prozent),details};
+}
+
+function abgeben(){
+  const email=$("email").value.trim();
+  if(email && !email.includes("@")){melden("abgabe-msg","Bitte eine gültige E-Mail-Adresse eingeben (oder Feld leer lassen).","err");return;}
+  const a=auswerten();
+  $("stat-punkte").textContent=`${a.punkte} / ${a.max}`;
+  $("stat-prozent").textContent=`${a.prozent.toFixed(0)} %`;
+  $("stat-note").textContent=a.note;
+  const dc=$("detail-container"); dc.innerHTML="";
+  a.details.forEach((d,i)=>{
+    const div=document.createElement("div"); div.className="detail "+(d.richtig?"ok":"no");
+    div.innerHTML=`<div class="mark">${d.richtig?"✓":"✗"}</div>
+      <div><div><b>${i+1}. ${esc(d.frage)}</b></div>
+      <div class="meta">Deine Antwort: ${esc(d.deine)}</div>
+      <div class="meta">Richtige Antwort: <b>${esc(d.loesung)}</b></div>
+      <div class="meta"><i>${esc(d.erklaerung)}</i></div></div>`;
+    dc.appendChild(div);
+  });
+  $("bereich-pruefung").hidden=true; $("bereich-ergebnis").hidden=false;
+  window.scrollTo(0,0);
+}
+
+function zurueck(){
+  $("bereich-pruefung").hidden=true; $("bereich-auswahl").hidden=false;
+}
+function neu(){
+  $("bereich-ergebnis").hidden=true; $("bereich-auswahl").hidden=false;
+  $("email").value=""; $("name").value="";
+}
+
+init();
+$("fach").addEventListener("change",fuelleStufen);
+$("stufe").addEventListener("change",fuelleThemen);
+$("btn-start").addEventListener("click",starten);
+$("btn-abgeben").addEventListener("click",abgeben);
+$("btn-zurueck").addEventListener("click",zurueck);
+$("btn-neu").addEventListener("click",neu);
+</script>
