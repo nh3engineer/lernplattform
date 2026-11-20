@@ -1,0 +1,11 @@
+# Geheimnisse / lokale Konfiguration
+.env
+
+# Lokal gespeicherte Auswertungs-PDFs
+ergebnisse/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

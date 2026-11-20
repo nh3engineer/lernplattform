@@ -1,0 +1,247 @@
+{
+  "faecher": {
+    "mathematik": {
+      "name": "Mathematik",
+      "stufen": {
+        "1": {
+          "name": "HTL 1. Klasse",
+          "themen": {
+            "termumformungen": {
+              "name": "Termumformungen & Grundrechenarten",
+              "fragen": [
+                {"id": "m1-term-1", "typ": "mc", "frage": "Vereinfache: 3a + 5a - 2a", "optionen": ["6a", "10a", "a", "8a"], "loesung": 0, "erklaerung": "3 + 5 - 2 = 6, also 6a."},
+                {"id": "m1-term-2", "typ": "mc", "frage": "Multipliziere aus: 2(x + 4)", "optionen": ["2x + 4", "2x + 8", "x + 8", "2x + 6"], "loesung": 1, "erklaerung": "2·x + 2·4 = 2x + 8."},
+                {"id": "m1-term-3", "typ": "num", "frage": "Berechne den Wert des Terms 4x - 3 für x = 5.", "loesung": 17, "toleranz": 0.001, "einheit": "", "erklaerung": "4·5 - 3 = 20 - 3 = 17."},
+                {"id": "m1-term-4", "typ": "mc", "frage": "Binomische Formel: (a + b)² =", "optionen": ["a² + b²", "a² + ab + b²", "a² + 2ab + b²", "a² - 2ab + b²"], "loesung": 2, "erklaerung": "Erste binomische Formel: a² + 2ab + b²."},
+                {"id": "m1-term-5", "typ": "num", "frage": "Berechne: (-3)² + 2·(-4)", "loesung": 1, "toleranz": 0.001, "einheit": "", "erklaerung": "9 + (-8) = 1."}
+              ]
+            },
+            "lineare-gleichungen": {
+              "name": "Lineare Gleichungen",
+              "fragen": [
+                {"id": "m1-lin-1", "typ": "num", "frage": "Löse nach x: 2x + 6 = 14", "loesung": 4, "toleranz": 0.001, "einheit": "", "erklaerung": "2x = 8, x = 4."},
+                {"id": "m1-lin-2", "typ": "num", "frage": "Löse nach x: 5x - 7 = 3x + 5", "loesung": 6, "toleranz": 0.001, "einheit": "", "erklaerung": "2x = 12, x = 6."},
+                {"id": "m1-lin-3", "typ": "mc", "frage": "Welche Umformung ist bei Gleichungen erlaubt?", "optionen": ["Beide Seiten mit 0 multiplizieren", "Auf beiden Seiten dieselbe Zahl addieren", "Nur eine Seite verändern", "Durch eine Variable dividieren, die 0 sein kann"], "loesung": 1, "erklaerung": "Äquivalenzumformungen müssen auf beiden Seiten gleich erfolgen."},
+                {"id": "m1-lin-4", "typ": "num", "frage": "Löse nach x: (x/3) = 4", "loesung": 12, "toleranz": 0.001, "einheit": "", "erklaerung": "x = 4·3 = 12."}
+              ]
+            },
+            "prozentrechnung": {
+              "name": "Prozent- & Schlussrechnung",
+              "fragen": [
+                {"id": "m1-proz-1", "typ": "num", "frage": "Wie viel sind 15 % von 240?", "loesung": 36, "toleranz": 0.01, "einheit": "", "erklaerung": "240·0,15 = 36."},
+                {"id": "m1-proz-2", "typ": "num", "frage": "Ein Preis steigt von 80 € auf 100 €. Um wie viel Prozent?", "loesung": 25, "toleranz": 0.1, "einheit": "%", "erklaerung": "20/80 = 0,25 = 25 %."},
+                {"id": "m1-proz-3", "typ": "num", "frage": "Von welcher Zahl sind 30 gleich 12 %?", "loesung": 250, "toleranz": 0.1, "einheit": "", "erklaerung": "30/0,12 = 250."}
+              ]
+            }
+          }
+        },
+        "2": {
+          "name": "HTL 2. Klasse",
+          "themen": {
+            "quadratische-gleichungen": {
+              "name": "Quadratische Gleichungen",
+              "fragen": [
+                {"id": "m2-quad-1", "typ": "mc", "frage": "Die Lösungsformel für ax² + bx + c = 0 lautet x =", "optionen": ["(-b ± √(b²-4ac)) / (2a)", "(-b ± √(b²+4ac)) / (2a)", "(b ± √(b²-4ac)) / a", "(-b ± √(4ac-b²)) / (2a)"], "loesung": 0, "erklaerung": "Große Lösungsformel (Mitternachtsformel)."},
+                {"id": "m2-quad-2", "typ": "num", "frage": "Eine Lösung von x² - 5x + 6 = 0 ist x = 2. Wie lautet die zweite Lösung?", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "Nach Vieta: x1·x2 = 6, 2·x2 = 6, x2 = 3."},
+                {"id": "m2-quad-3", "typ": "num", "frage": "Berechne die Diskriminante von x² - 4x + 4 = 0.", "loesung": 0, "toleranz": 0.001, "einheit": "", "erklaerung": "D = b²-4ac = 16 - 16 = 0 (Doppellösung)."},
+                {"id": "m2-quad-4", "typ": "mc", "frage": "Was bedeutet eine negative Diskriminante (D < 0)?", "optionen": ["Zwei reelle Lösungen", "Eine reelle Lösung", "Keine reelle Lösung", "Unendlich viele Lösungen"], "loesung": 2, "erklaerung": "Bei D < 0 gibt es keine reellen, sondern konjugiert komplexe Lösungen."}
+              ]
+            },
+            "trigonometrie": {
+              "name": "Trigonometrie im rechtwinkligen Dreieck",
+              "fragen": [
+                {"id": "m2-trig-1", "typ": "mc", "frage": "Im rechtwinkligen Dreieck gilt sin(α) =", "optionen": ["Ankathete / Hypotenuse", "Gegenkathete / Hypotenuse", "Gegenkathete / Ankathete", "Hypotenuse / Gegenkathete"], "loesung": 1, "erklaerung": "Sinus = Gegenkathete / Hypotenuse."},
+                {"id": "m2-trig-2", "typ": "num", "frage": "Berechne sin(30°). (Dezimalwert)", "loesung": 0.5, "toleranz": 0.01, "einheit": "", "erklaerung": "sin(30°) = 0,5."},
+                {"id": "m2-trig-3", "typ": "num", "frage": "Ein rechtwinkliges Dreieck hat Katheten 3 und 4. Wie lang ist die Hypotenuse?", "loesung": 5, "toleranz": 0.01, "einheit": "", "erklaerung": "√(3²+4²) = √25 = 5 (Satz des Pythagoras)."},
+                {"id": "m2-trig-4", "typ": "mc", "frage": "tan(α) ist definiert als", "optionen": ["sin(α)·cos(α)", "sin(α) / cos(α)", "cos(α) / sin(α)", "1 / sin(α)"], "loesung": 1, "erklaerung": "tan = sin/cos = Gegenkathete/Ankathete."}
+              ]
+            },
+            "funktionen": {
+              "name": "Lineare & quadratische Funktionen",
+              "fragen": [
+                {"id": "m2-fkt-1", "typ": "mc", "frage": "Die Steigung der Geraden y = 3x + 2 beträgt", "optionen": ["2", "3", "3x", "5"], "loesung": 1, "erklaerung": "k = 3 (Koeffizient von x)."},
+                {"id": "m2-fkt-2", "typ": "num", "frage": "Wo schneidet y = 2x - 6 die x-Achse? (x-Wert)", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "2x - 6 = 0, x = 3."},
+                {"id": "m2-fkt-3", "typ": "mc", "frage": "Der Graph von y = x² ist eine", "optionen": ["Gerade", "Parabel", "Hyperbel", "Kreis"], "loesung": 1, "erklaerung": "Quadratische Funktion → nach oben geöffnete Parabel."}
+              ]
+            }
+          }
+        },
+        "3": {
+          "name": "HTL 3. Klasse",
+          "themen": {
+            "differentialrechnung": {
+              "name": "Differentialrechnung",
+              "fragen": [
+                {"id": "m3-diff-1", "typ": "mc", "frage": "Die Ableitung von f(x) = x³ ist", "optionen": ["3x²", "x²", "3x", "x⁴/4"], "loesung": 0, "erklaerung": "Potenzregel: f'(x) = 3x²."},
+                {"id": "m3-diff-2", "typ": "num", "frage": "Berechne f'(2) für f(x) = x².", "loesung": 4, "toleranz": 0.001, "einheit": "", "erklaerung": "f'(x) = 2x, f'(2) = 4."},
+                {"id": "m3-diff-3", "typ": "mc", "frage": "Die Ableitung von f(x) = sin(x) ist", "optionen": ["-sin(x)", "cos(x)", "-cos(x)", "tan(x)"], "loesung": 1, "erklaerung": "f'(x) = cos(x)."},
+                {"id": "m3-diff-4", "typ": "mc", "frage": "An einem lokalen Extremum einer differenzierbaren Funktion gilt", "optionen": ["f(x) = 0", "f'(x) = 0", "f''(x) = 0", "f'(x) = 1"], "loesung": 1, "erklaerung": "Notwendige Bedingung: erste Ableitung null."},
+                {"id": "m3-diff-5", "typ": "num", "frage": "Für f(x) = 3x² + 2x: berechne f'(1).", "loesung": 8, "toleranz": 0.001, "einheit": "", "erklaerung": "f'(x) = 6x + 2, f'(1) = 8."}
+              ]
+            },
+            "exp-log": {
+              "name": "Exponential- & Logarithmusfunktionen",
+              "fragen": [
+                {"id": "m3-exp-1", "typ": "num", "frage": "Berechne log₁₀(1000).", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "10³ = 1000, also log = 3."},
+                {"id": "m3-exp-2", "typ": "mc", "frage": "Die Ableitung von f(x) = eˣ ist", "optionen": ["x·eˣ⁻¹", "eˣ", "1/x", "ln(x)"], "loesung": 1, "erklaerung": "e-Funktion ist ihre eigene Ableitung."},
+                {"id": "m3-exp-3", "typ": "num", "frage": "Berechne ln(1).", "loesung": 0, "toleranz": 0.001, "einheit": "", "erklaerung": "e⁰ = 1, also ln(1) = 0."},
+                {"id": "m3-exp-4", "typ": "mc", "frage": "Welches Gesetz gilt? log(a·b) =", "optionen": ["log(a)·log(b)", "log(a) + log(b)", "log(a) - log(b)", "log(a)/log(b)"], "loesung": 1, "erklaerung": "Logarithmus eines Produkts = Summe der Logarithmen."}
+              ]
+            }
+          }
+        },
+        "4": {
+          "name": "HTL 4. Klasse",
+          "themen": {
+            "integralrechnung": {
+              "name": "Integralrechnung",
+              "fragen": [
+                {"id": "m4-int-1", "typ": "mc", "frage": "Die Stammfunktion von f(x) = 2x ist", "optionen": ["2", "x² + C", "2x² + C", "x + C"], "loesung": 1, "erklaerung": "∫2x dx = x² + C."},
+                {"id": "m4-int-2", "typ": "num", "frage": "Berechne das bestimmte Integral ∫₀² 2x dx.", "loesung": 4, "toleranz": 0.001, "einheit": "", "erklaerung": "[x²]₀² = 4 - 0 = 4."},
+                {"id": "m4-int-3", "typ": "mc", "frage": "∫ eˣ dx =", "optionen": ["eˣ + C", "x·eˣ + C", "eˣ⁺¹ + C", "ln(x) + C"], "loesung": 0, "erklaerung": "Stammfunktion von eˣ ist eˣ + C."},
+                {"id": "m4-int-4", "typ": "num", "frage": "Berechne ∫₁³ 1 dx.", "loesung": 2, "toleranz": 0.001, "einheit": "", "erklaerung": "[x]₁³ = 3 - 1 = 2."}
+              ]
+            },
+            "komplexe-zahlen": {
+              "name": "Komplexe Zahlen",
+              "fragen": [
+                {"id": "m4-kplx-1", "typ": "mc", "frage": "Die imaginäre Einheit i erfüllt", "optionen": ["i² = 1", "i² = -1", "i = -1", "i² = 0"], "loesung": 1, "erklaerung": "Definition: i² = -1."},
+                {"id": "m4-kplx-2", "typ": "mc", "frage": "Der Betrag von z = 3 + 4i ist", "optionen": ["7", "5", "12", "25"], "loesung": 1, "erklaerung": "|z| = √(3²+4²) = 5."},
+                {"id": "m4-kplx-3", "typ": "mc", "frage": "Die konjugiert komplexe Zahl zu z = 2 - 5i ist", "optionen": ["-2 + 5i", "2 + 5i", "-2 - 5i", "5 - 2i"], "loesung": 1, "erklaerung": "Vorzeichen des Imaginärteils umkehren: 2 + 5i."}
+              ]
+            }
+          }
+        },
+        "5": {
+          "name": "HTL 5. Klasse",
+          "themen": {
+            "wahrscheinlichkeit": {
+              "name": "Wahrscheinlichkeit & Statistik",
+              "fragen": [
+                {"id": "m5-wsk-1", "typ": "num", "frage": "Wie groß ist die Wahrscheinlichkeit, mit einem fairen Würfel eine 6 zu werfen? (Dezimal, gerundet auf 3 Stellen)", "loesung": 0.167, "toleranz": 0.002, "einheit": "", "erklaerung": "1/6 ≈ 0,167."},
+                {"id": "m5-wsk-2", "typ": "num", "frage": "Berechne den Mittelwert von 4, 8, 10, 6, 2.", "loesung": 6, "toleranz": 0.01, "einheit": "", "erklaerung": "(4+8+10+6+2)/5 = 30/5 = 6."},
+                {"id": "m5-wsk-3", "typ": "mc", "frage": "Die Summe aller Wahrscheinlichkeiten eines Zufallsexperiments ist", "optionen": ["0", "0,5", "1", "100"], "loesung": 2, "erklaerung": "Normierung: Gesamtwahrscheinlichkeit = 1."},
+                {"id": "m5-wsk-4", "typ": "num", "frage": "Zwei faire Münzen: Wahrscheinlichkeit für zweimal Kopf? (Dezimal)", "loesung": 0.25, "toleranz": 0.001, "einheit": "", "erklaerung": "0,5·0,5 = 0,25."}
+              ]
+            },
+            "differentialgleichungen": {
+              "name": "Differentialgleichungen (Einführung)",
+              "fragen": [
+                {"id": "m5-dgl-1", "typ": "mc", "frage": "Die Lösung von y' = y ist", "optionen": ["y = x²", "y = C·eˣ", "y = sin(x)", "y = ln(x)"], "loesung": 1, "erklaerung": "Exponentielles Wachstum: y = C·eˣ."},
+                {"id": "m5-dgl-2", "typ": "mc", "frage": "Eine Differentialgleichung 1. Ordnung enthält höchstens", "optionen": ["die Funktion selbst", "die erste Ableitung", "die zweite Ableitung", "die dritte Ableitung"], "loesung": 1, "erklaerung": "Ordnung = höchste vorkommende Ableitung, hier y'."}
+              ]
+            }
+          }
+        }
+      }
+    },
+    "physik": {
+      "name": "Physik",
+      "stufen": {
+        "1": {
+          "name": "HTL 1. Klasse",
+          "themen": {
+            "kinematik": {
+              "name": "Kinematik (gleichförmige Bewegung)",
+              "fragen": [
+                {"id": "p1-kin-1", "typ": "mc", "frage": "Die Einheit der Geschwindigkeit im SI-System ist", "optionen": ["km/h", "m/s", "m/s²", "N"], "loesung": 1, "erklaerung": "SI-Einheit: Meter pro Sekunde."},
+                {"id": "p1-kin-2", "typ": "num", "frage": "Ein Auto fährt 150 km in 2 h. Wie groß ist die Durchschnittsgeschwindigkeit in km/h?", "loesung": 75, "toleranz": 0.1, "einheit": "km/h", "erklaerung": "v = s/t = 150/2 = 75 km/h."},
+                {"id": "p1-kin-3", "typ": "num", "frage": "Wandle 72 km/h in m/s um.", "loesung": 20, "toleranz": 0.1, "einheit": "m/s", "erklaerung": "72 / 3,6 = 20 m/s."},
+                {"id": "p1-kin-4", "typ": "num", "frage": "Mit 10 m/s: welche Strecke in 5 s? (gleichförmig)", "loesung": 50, "toleranz": 0.1, "einheit": "m", "erklaerung": "s = v·t = 10·5 = 50 m."}
+              ]
+            },
+            "kraefte": {
+              "name": "Kräfte & Dichte",
+              "fragen": [
+                {"id": "p1-kraft-1", "typ": "mc", "frage": "Die Einheit der Kraft ist", "optionen": ["Joule (J)", "Newton (N)", "Watt (W)", "Pascal (Pa)"], "loesung": 1, "erklaerung": "Kraft wird in Newton gemessen."},
+                {"id": "p1-kraft-2", "typ": "num", "frage": "Welche Gewichtskraft wirkt auf 5 kg? (g = 9,81 m/s², in N)", "loesung": 49.05, "toleranz": 0.5, "einheit": "N", "erklaerung": "F = m·g = 5·9,81 = 49,05 N."},
+                {"id": "p1-kraft-3", "typ": "num", "frage": "Dichte von 200 g auf 250 cm³? (in g/cm³)", "loesung": 0.8, "toleranz": 0.01, "einheit": "g/cm³", "erklaerung": "ρ = m/V = 200/250 = 0,8 g/cm³."},
+                {"id": "p1-kraft-4", "typ": "mc", "frage": "Das newtonsche Grundgesetz lautet", "optionen": ["F = m/a", "F = m·a", "F = a/m", "F = m·v"], "loesung": 1, "erklaerung": "Kraft = Masse · Beschleunigung."}
+              ]
+            }
+          }
+        },
+        "2": {
+          "name": "HTL 2. Klasse",
+          "themen": {
+            "energie": {
+              "name": "Arbeit, Energie & Leistung",
+              "fragen": [
+                {"id": "p2-en-1", "typ": "mc", "frage": "Die Einheit der Energie ist", "optionen": ["Newton (N)", "Joule (J)", "Watt (W)", "Volt (V)"], "loesung": 1, "erklaerung": "Energie und Arbeit werden in Joule gemessen."},
+                {"id": "p2-en-2", "typ": "num", "frage": "Hubarbeit, um 10 kg um 2 m zu heben? (g = 9,81 m/s², in J)", "loesung": 196.2, "toleranz": 1, "einheit": "J", "erklaerung": "W = m·g·h = 10·9,81·2 = 196,2 J."},
+                {"id": "p2-en-3", "typ": "num", "frage": "Kinetische Energie von 2 kg bei 3 m/s? (in J)", "loesung": 9, "toleranz": 0.1, "einheit": "J", "erklaerung": "E = ½mv² = 0,5·2·9 = 9 J."},
+                {"id": "p2-en-4", "typ": "num", "frage": "Leistung, wenn 600 J in 3 s verrichtet werden? (in W)", "loesung": 200, "toleranz": 0.5, "einheit": "W", "erklaerung": "P = W/t = 600/3 = 200 W."}
+              ]
+            },
+            "waermelehre": {
+              "name": "Wärmelehre",
+              "fragen": [
+                {"id": "p2-waerme-1", "typ": "num", "frage": "0 °C entsprechen wie viel Kelvin?", "loesung": 273.15, "toleranz": 0.5, "einheit": "K", "erklaerung": "T(K) = T(°C) + 273,15."},
+                {"id": "p2-waerme-2", "typ": "mc", "frage": "Die Wärmemenge berechnet sich mit", "optionen": ["Q = m·c·ΔT", "Q = m·g·h", "Q = ½mv²", "Q = U·I"], "loesung": 0, "erklaerung": "Q = Masse · spezifische Wärmekapazität · Temperaturdifferenz."},
+                {"id": "p2-waerme-3", "typ": "mc", "frage": "Bei welchem Vorgang geht ein Stoff von fest zu flüssig über?", "optionen": ["Verdampfen", "Schmelzen", "Sublimieren", "Kondensieren"], "loesung": 1, "erklaerung": "Fest → flüssig heißt Schmelzen."}
+              ]
+            }
+          }
+        },
+        "3": {
+          "name": "HTL 3. Klasse",
+          "themen": {
+            "elektrizitaet": {
+              "name": "Elektrizitätslehre (Gleichstrom)",
+              "fragen": [
+                {"id": "p3-el-1", "typ": "mc", "frage": "Das ohmsche Gesetz lautet", "optionen": ["U = R/I", "U = R·I", "U = I/R", "U = P·I"], "loesung": 1, "erklaerung": "Spannung = Widerstand · Strom."},
+                {"id": "p3-el-2", "typ": "num", "frage": "Welcher Strom fließt bei U = 12 V und R = 4 Ω? (in A)", "loesung": 3, "toleranz": 0.01, "einheit": "A", "erklaerung": "I = U/R = 12/4 = 3 A."},
+                {"id": "p3-el-3", "typ": "num", "frage": "Elektrische Leistung bei U = 230 V und I = 2 A? (in W)", "loesung": 460, "toleranz": 1, "einheit": "W", "erklaerung": "P = U·I = 230·2 = 460 W."},
+                {"id": "p3-el-4", "typ": "num", "frage": "Zwei Widerstände 3 Ω und 6 Ω in Serie. Gesamtwiderstand? (in Ω)", "loesung": 9, "toleranz": 0.1, "einheit": "Ω", "erklaerung": "Serie: R = R1 + R2 = 9 Ω."},
+                {"id": "p3-el-5", "typ": "mc", "frage": "Die Einheit der elektrischen Ladung ist", "optionen": ["Ampere (A)", "Coulomb (C)", "Volt (V)", "Ohm (Ω)"], "loesung": 1, "erklaerung": "Ladung Q wird in Coulomb gemessen."}
+              ]
+            },
+            "schwingungen": {
+              "name": "Schwingungen & Wellen",
+              "fragen": [
+                {"id": "p3-schw-1", "typ": "mc", "frage": "Die Frequenz hat die Einheit", "optionen": ["Sekunde (s)", "Hertz (Hz)", "Meter (m)", "Watt (W)"], "loesung": 1, "erklaerung": "f in Hertz = 1/s."},
+                {"id": "p3-schw-2", "typ": "num", "frage": "Periodendauer bei f = 50 Hz? (in s)", "loesung": 0.02, "toleranz": 0.001, "einheit": "s", "erklaerung": "T = 1/f = 1/50 = 0,02 s."},
+                {"id": "p3-schw-3", "typ": "num", "frage": "Wellenlänge bei v = 340 m/s und f = 170 Hz? (in m)", "loesung": 2, "toleranz": 0.05, "einheit": "m", "erklaerung": "λ = v/f = 340/170 = 2 m."}
+              ]
+            }
+          }
+        },
+        "4": {
+          "name": "HTL 4. Klasse",
+          "themen": {
+            "optik": {
+              "name": "Optik",
+              "fragen": [
+                {"id": "p4-opt-1", "typ": "num", "frage": "Lichtgeschwindigkeit im Vakuum (gerundet, in 10⁸ m/s)? Gib nur die Zahl vor 10⁸ an.", "loesung": 3, "toleranz": 0.05, "einheit": "·10⁸ m/s", "erklaerung": "c ≈ 3·10⁸ m/s."},
+                {"id": "p4-opt-2", "typ": "mc", "frage": "Das Reflexionsgesetz besagt", "optionen": ["Einfallswinkel > Ausfallswinkel", "Einfallswinkel = Ausfallswinkel", "Einfallswinkel < Ausfallswinkel", "Winkel sind unabhängig"], "loesung": 1, "erklaerung": "Einfallswinkel = Reflexionswinkel."},
+                {"id": "p4-opt-3", "typ": "mc", "frage": "Beim Übergang von Luft in Glas wird Licht", "optionen": ["vom Lot weg gebrochen", "zum Lot hin gebrochen", "gar nicht gebrochen", "vollständig absorbiert"], "loesung": 1, "erklaerung": "In das optisch dichtere Medium → Brechung zum Lot."}
+              ]
+            },
+            "thermodynamik": {
+              "name": "Thermodynamik",
+              "fragen": [
+                {"id": "p4-therm-1", "typ": "mc", "frage": "Der 1. Hauptsatz der Thermodynamik ist ein Satz über die Erhaltung der", "optionen": ["Masse", "Energie", "Ladung", "Temperatur"], "loesung": 1, "erklaerung": "Energieerhaltung: ΔU = Q + W."},
+                {"id": "p4-therm-2", "typ": "mc", "frage": "Die allgemeine Gasgleichung lautet", "optionen": ["p·V = n·R·T", "p·V = m·g·h", "p = R/T", "V = p·T"], "loesung": 0, "erklaerung": "Ideales Gasgesetz: pV = nRT."},
+                {"id": "p4-therm-3", "typ": "mc", "frage": "Ein Wirkungsgrad kann höchstens", "optionen": ["größer als 1 sein", "gleich 1 (100 %) sein", "negativ sein", "unendlich sein"], "loesung": 1, "erklaerung": "η ≤ 1; reale Maschinen immer < 1."}
+              ]
+            }
+          }
+        },
+        "5": {
+          "name": "HTL 5. Klasse",
+          "themen": {
+            "atom-kernphysik": {
+              "name": "Atom- & Kernphysik",
+              "fragen": [
+                {"id": "p5-atom-1", "typ": "mc", "frage": "Der Atomkern besteht aus", "optionen": ["Protonen und Elektronen", "Protonen und Neutronen", "nur Neutronen", "Elektronen und Neutronen"], "loesung": 1, "erklaerung": "Nukleonen = Protonen + Neutronen."},
+                {"id": "p5-atom-2", "typ": "mc", "frage": "Einsteins Masse-Energie-Beziehung lautet", "optionen": ["E = m·c", "E = m·c²", "E = ½m·c²", "E = m/c²"], "loesung": 1, "erklaerung": "E = m·c²."},
+                {"id": "p5-atom-3", "typ": "num", "frage": "Nach wie vielen Halbwertszeiten ist nur noch 1/8 eines Stoffes vorhanden?", "loesung": 3, "toleranz": 0.001, "einheit": "", "erklaerung": "(1/2)³ = 1/8, also 3 Halbwertszeiten."},
+                {"id": "p5-atom-4", "typ": "mc", "frage": "Welche Strahlung hat die geringste Reichweite / höchste Ionisierung?", "optionen": ["Alpha-Strahlung", "Beta-Strahlung", "Gamma-Strahlung", "Röntgenstrahlung"], "loesung": 0, "erklaerung": "Alpha-Teilchen: kurze Reichweite, stark ionisierend."}
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

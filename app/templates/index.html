@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lernplattform Physik &amp; Mathematik</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Lernplattform &ndash; Physik &amp; Mathematik</h1>
+    <p>Prüfungen nach Fach und Schulstufe (HTL 1.&ndash;5. Klasse) &middot; automatische Auswertung</p>
+  </header>
+
+  <main>
+    <!-- Auswahl -->
+    <section id="bereich-auswahl" class="karte">
+      <h2>1 &middot; Prüfung zusammenstellen</h2>
+      <div class="grid2">
+        <div>
+          <label for="fach">Fach</label>
+          <select id="fach"></select>
+        </div>
+        <div>
+          <label for="stufe">Schulstufe</label>
+          <select id="stufe" disabled></select>
+        </div>
+      </div>
+      <label for="thema">Themengebiet</label>
+      <select id="thema" disabled></select>
+      <div style="margin-top:16px">
+        <button id="btn-start" class="btn-primary">Prüfung starten</button>
+      </div>
+      <div id="auswahl-msg" class="msg versteckt"></div>
+    </section>
+
+    <!-- Prüfung -->
+    <section id="bereich-pruefung" class="karte versteckt">
+      <h2 id="pruefung-titel">Prüfung</h2>
+      <div id="fragen-container"></div>
+
+      <h2 style="margin-top:22px">Abgabe</h2>
+      <div class="grid2">
+        <div>
+          <label for="name">Name (optional)</label>
+          <input type="text" id="name" placeholder="Vor- und Nachname">
+        </div>
+        <div>
+          <label for="email">E-Mail-Adresse *</label>
+          <input type="email" id="email" placeholder="name@beispiel.at" required>
+        </div>
+      </div>
+      <div class="hinweis">
+        Das Auswertungs-PDF wird an deine E-Mail-Adresse geschickt. Eine Kopie
+        der Auswertung geht automatisch an die Lehrperson
+        {% if instructor %}(<b>{{ instructor }}</b>){% endif %}.
+        {% if not mail_aktiv %}
+        <br><b>Hinweis:</b> Der E-Mail-Versand ist derzeit nicht konfiguriert &ndash;
+        das PDF wird dann lokal gespeichert (siehe README).
+        {% endif %}
+      </div>
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+        <button id="btn-abgeben" class="btn-primary">Prüfung abgeben &amp; auswerten</button>
+      </div>
+      <div id="abgabe-msg" class="msg versteckt"></div>
+    </section>
+
+    <!-- Ergebnis -->
+    <section id="bereich-ergebnis" class="karte versteckt">
+      <h2>Auswertung</h2>
+      <div class="ergebnis-box">
+        <div class="stat"><div class="wert" id="stat-punkte">&ndash;</div><div class="label">Punkte</div></div>
+        <div class="stat"><div class="wert" id="stat-prozent">&ndash;</div><div class="label">Prozent</div></div>
+        <div class="stat"><div class="wert" id="stat-note" style="font-size:1.1rem">&ndash;</div><div class="label">Note</div></div>
+      </div>
+      <div id="mail-status" class="msg ok"></div>
+      <h2 style="margin-top:20px">Detailauswertung</h2>
+      <div id="detail-container"></div>
+      <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
+        <button id="btn-pdf" class="btn-ghost">PDF herunterladen</button>
+        <button id="btn-neu" class="btn-primary">Neue Prüfung</button>
+      </div>
+    </section>
+
+    <div class="fusszeile">Lernplattform &middot; läuft lokal auf jedem Rechner mit Python</div>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
